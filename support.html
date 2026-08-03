@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatermarkIt — Support</title>
+  <meta name="description"
+    content="Get help with WatermarkIt — the fast, private iOS watermarking app. Browse FAQs or contact us directly." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --purple: #7C3AED;
+      --purple-light: #8B5CF6;
+      --purple-dark: #4C1D95;
+      --gradient: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
+      --bg: #0A0A0F;
+      --surface: #13131A;
+      --surface2: #1C1C28;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #F0F0F8;
+      --muted: #8888AA;
+      --radius: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--gradient);
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--bg);
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    /* QUICK CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--purple-light);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(124, 58, 237, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* FAQ */
+    .faq {
+      margin-bottom: 64px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: left;
+      padding: 20px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: var(--purple-light);
+    }
+
+    .faq-arrow {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.2s;
+    }
+
+    .faq-arrow svg {
+      width: 10px;
+      height: 10px;
+      fill: none;
+      stroke: var(--muted);
+      stroke-width: 2;
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+      background: rgba(124, 58, 237, 0.2);
+    }
+
+    .faq-item.open .faq-arrow svg {
+      stroke: var(--purple-light);
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 20px;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="appicon.png" class="logo-icon" alt="WatermarkIt App Icon">
+        WatermarkIt
+      </a>
+      <a href="privacy.html" class="nav-link">Privacy Policy</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>How can we help?</h1>
+    <p>Find answers to common questions or get in touch with us directly.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Quick Links -->
+    <div class="section-title">Quick Help</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <h3>Add a Watermark</h3>
+        <p>Tap "Pick a Photo", choose your image, then type your text or upload a logo in the editor.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Batch Mode</h3>
+        <p>Tap "Batch Import" on the home screen to select multiple photos and apply the same watermark to all.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Save Templates</h3>
+        <p>Open Templates, tap +, design your style, then tap Export → Save as Template to reuse it anytime.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📤</div>
+        <h3>Export & Share</h3>
+        <p>Tap Export, choose quality (High/Medium) and format (JPEG/PNG), then save or share directly.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-title">Frequently Asked Questions</div>
+    <div class="faq">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Are my photos uploaded to the internet?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">No. WatermarkIt processes everything 100% on your device. Your photos are never
+          uploaded, sent to a server, or shared with anyone. All processing happens entirely on your device.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How many photos can I watermark at once?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">In Batch mode, you can select multiple photos at once. For single photos, use the "Pick
+          a Photo" button on the home screen — repeat as many times as you need.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I use my own logo as a watermark?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Yes! In the editor, switch to the "Logo" tab and tap "Upload Logo" to import any image
+          from your photo library. You can resize, reposition, and set the opacity of your logo. PNG files with
+          transparency work best.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What export formats are supported?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">WatermarkIt exports in JPEG (smaller file size, great for social media) and PNG
+          (lossless quality, preserves logo transparency). You can also choose between High and Medium quality for JPEG
+          exports.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Can I save my watermark style for later?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Absolutely. Tap the Templates icon in the editor, then tap + to open a new template
+          editor. Design your style and save it with a name. It will appear in "My Templates" on the Templates screen
+          for quick access anytime.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          The app is asking for photo library access. Why?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">WatermarkIt needs read access to let you pick photos to watermark, and write access to
+          save the watermarked result back to your camera roll. We only access the photos you explicitly select —
+          nothing else.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How do I delete a custom template?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">On the Templates screen, press and hold any template card in "My Templates". A context
+          menu will appear with a Delete option. Note: built-in templates cannot be deleted.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What iOS version is required?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">WatermarkIt requires iOS 26.0 or later, compatible with iPhone and iPad.</div>
+      </div>
+
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-box">
+      <h2>Still need help?</h2>
+      <p>Can't find what you're looking for? Send us an email and we'll get back to you as soon as possible.</p>
+      <a href="mailto:support@watermarkit.app" class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+        support@watermarkit.app
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© <span id="yr-support"></span> WatermarkIt · <a href="privacy.html">Privacy Policy</a> · Made with ❤️ for iOS
+    </p>
+  </footer>
+
+  <script>
+    function toggle(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+    document.getElementById('yr-support').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+
+</html>

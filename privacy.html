@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WatermarkIt — Privacy Policy</title>
+  <meta name="description" content="WatermarkIt Privacy Policy. Your photos never leave your device. No data collection, no accounts, no cloud storage." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7C3AED;
+      --purple-light: #8B5CF6;
+      --gradient: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
+      --bg: #0A0A0F;
+      --surface: #13131A;
+      --surface2: #1C1C28;
+      --border: rgba(255,255,255,0.08);
+      --text: #F0F0F8;
+      --muted: #8888AA;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      background: var(--gradient);
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--bg);
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero .meta {
+      font-size: 15px;
+      opacity: 0.75;
+    }
+
+    /* SUMMARY PILL */
+    .summary-strip {
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(124, 58, 237, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    /* POLICY SECTIONS */
+    .policy-section {
+      margin-bottom: 48px;
+    }
+    .policy-section h2 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .policy-section h2 .num {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(124, 58, 237, 0.2);
+      color: var(--purple-light);
+      font-size: 13px;
+      font-weight: 700;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .policy-section p {
+      color: #B0B0CC;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .policy-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .policy-section ul li {
+      color: #B0B0CC;
+      font-size: 15px;
+      padding: 6px 0 6px 24px;
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--purple-light);
+      font-weight: 600;
+    }
+    .highlight {
+      background: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.25);
+      border-radius: 10px;
+      padding: 16px 20px;
+      color: var(--text) !important;
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+      margin-top: 56px;
+    }
+    .contact-box h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .contact-box p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--purple-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <img src="appicon.png" class="logo-icon" alt="WatermarkIt App Icon">
+        WatermarkIt
+      </a>
+      <a href="support.html" class="nav-link">Support</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective Date: June 1, 2026 &nbsp;·&nbsp; Last Updated: June 1, 2026</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Summary Strip -->
+    <div class="summary-strip">
+      <div class="summary-item"><span class="check">✓</span> On-device processing</div>
+      <div class="summary-item"><span class="check">✓</span> Privacy-focused</div>
+      <div class="summary-item"><span class="check">✓</span> No cloud uploads</div>
+      <div class="summary-item"><span class="check">✓</span> Secure local storage</div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="policy-section">
+      <h2><span class="num">1</span> Overview</h2>
+      <p class="highlight">WatermarkIt does not collect, store, transmit, or share any personal data or images. All processing happens entirely on your device.</p>
+      <p>This Privacy Policy explains how the WatermarkIt iOS application ("the App", "we", "us") handles your information. We are committed to protecting your privacy and being transparent about our practices.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="policy-section">
+      <h2><span class="num">2</span> Data Collection and Usage</h2>
+      <p><strong>Our Absolute Commitment:</strong> We never access, upload, transmit, or store your photos under any circumstances. All image processing is performed entirely locally on your device.</p>
+      <p>At present, the App does not collect personal identification information (such as your name or email address). If we introduce features like user accounts, subscriptions, or basic usage analytics/diagnostic reporting in the future, your photos will still remain 100% private and will never be accessed, uploaded, or stored by us.</p>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="policy-section">
+      <h2><span class="num">3</span> How the App Works</h2>
+      <p>WatermarkIt is a fully offline, on-device application. Here is exactly what happens when you use it:</p>
+      <ul>
+        <li>You select a photo from your iPhone's photo library</li>
+        <li>The App reads that photo locally on your device</li>
+        <li>Watermark processing is performed entirely on your device</li>
+        <li>The result is saved back to your local Camera Roll or shared via iOS Share Sheet</li>
+        <li>At no point is your photo, or any data derived from it, sent to any external server</li>
+      </ul>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="policy-section">
+      <h2><span class="num">4</span> Photo Library Permissions</h2>
+      <p>The App requests the following iOS permissions:</p>
+      <ul>
+        <li><strong style="color: var(--text);">Photo Library Read Access</strong> — to allow you to select photos you want to watermark. We only access photos you explicitly choose.</li>
+        <li><strong style="color: var(--text);">Photo Library Write Access</strong> — to save your watermarked images back to your Camera Roll.</li>
+      </ul>
+      <p>These permissions are only requested at the moment you attempt to use the relevant feature — never automatically on launch. You can revoke these permissions at any time in iOS Settings → Privacy & Security → Photos.</p>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="policy-section">
+      <h2><span class="num">5</span> Local Data Storage</h2>
+      <p>The App stores the following data <strong style="color: var(--text);">only on your device</strong>:</p>
+      <ul>
+        <li>Watermark templates you create (name, font, size, color, opacity, position)</li>
+        <li>Thumbnail preview images for your saved templates</li>
+      </ul>
+      <p>This data never leaves your device. It is stored in the App's local container and is deleted automatically if you uninstall the App.</p>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="policy-section">
+      <h2><span class="num">6</span> Third-Party Services</h2>
+      <p>The App does not share your data with third-party advertising networks. We may use verified third-party SDKs or service providers for app analytics, crash reporting, or subscription management. Any such services are integrated strictly to support the app's functionality and improve user experience.</p>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="policy-section">
+      <h2><span class="num">7</span> Children's Privacy</h2>
+      <p>WatermarkIt is designed for a general audience. We do not knowingly collect personal information from children under the age of 13. If you believe we have inadvertently collected such information, please contact us so we can promptly address it.</p>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="policy-section">
+      <h2><span class="num">8</span> Data Security</h2>
+      <p>Because WatermarkIt does not transmit any data, there is no data in transit to secure. All data stored locally (your templates) is subject to iOS's built-in device encryption, which is enabled whenever you use a device passcode.</p>
+    </div>
+
+    <!-- Section 9 -->
+    <div class="policy-section">
+      <h2><span class="num">9</span> Changes to This Policy</h2>
+      <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically for any changes.</p>
+    </div>
+
+    <!-- Section 10 -->
+    <div class="policy-section">
+      <h2><span class="num">10</span> Your Rights</h2>
+      <p>Depending on your location, you may have rights regarding your data under local regulations (such as GDPR or CCPA). Since the majority of your data (like templates and photos) is stored locally, you can manage it directly by modifying or deleting items inside the App, or by uninstalling the App.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-box">
+      <h2>Questions about your privacy?</h2>
+      <p>If you have any questions or concerns about this Privacy Policy, reach out — we're happy to help.</p>
+      <a href="mailto:privacy@watermarkit.app" class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        privacy@watermarkit.app
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© <span id="yr-privacy"></span> WatermarkIt · <a href="support.html">Support</a> · Made with ❤️ for iOS</p>
+  </footer>
+
+<script>
+  document.getElementById('yr-privacy').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
