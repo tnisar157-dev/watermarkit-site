@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WatermarkIt — Beautiful Photo Watermarking for iOS</title>
-  <meta name="description" content="WatermarkIt is a fast, private iOS app to add text or logo watermarks to your photos — individually or in batch. 100% on-device." />
+  <title>WatermarkIT — Free Photo Watermark App for iPhone &amp; iPad</title>
+  <meta name="description" content="WatermarkIT is a free, private iOS app for watermarking photos — text, logo, hand-drawn signature, QR code or tiled marks, plus invisible copyright that survives cropping. 100% on-device. iOS 18+." />
+  <link rel="icon" type="image/png" href="appicon.png" />
+  <link rel="apple-touch-icon" href="appicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,17 +14,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --purple: #7C3AED;
-      --purple-light: #8B5CF6;
-      --purple-dim: rgba(124,58,237,0.15);
-      --gradient: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
-      --gradient-text: linear-gradient(135deg, #A78BFA 0%, #E879F9 100%);
-      --bg: #0A0A0F;
-      --surface: #13131A;
-      --surface2: #1C1C28;
+      --green: #0B8340;
+      --green-light: #30D158;
+      --green-dim: rgba(48,209,88,0.15);
+      --gradient: linear-gradient(135deg, #04642F 0%, #0B8340 100%);
+      --gradient-text: linear-gradient(135deg, #7CFFA8 0%, #30D158 100%);
+      --bg: #0C0C0E;
+      --surface: #161618;
+      --surface2: #1D1D20;
       --border: rgba(255,255,255,0.08);
-      --text: #F0F0F8;
-      --muted: #8888AA;
+      --text: #F0F0F2;
+      --muted: #98989E;
       --radius: 18px;
     }
 
@@ -107,7 +109,7 @@
     .hero-glow {
       position: absolute;
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(48,209,88,0.28) 0%, transparent 70%);
       border-radius: 50%;
       top: 50%; left: 50%;
       transform: translate(-50%, -55%);
@@ -117,18 +119,18 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--purple-dim);
-      border: 1px solid rgba(124,58,237,0.4);
+      background: var(--green-dim);
+      border: 1px solid rgba(48,209,88,0.4);
       border-radius: 100px;
       padding: 6px 16px;
       font-size: 13px;
       font-weight: 600;
-      color: var(--purple-light);
+      color: var(--green-light);
       margin-bottom: 32px;
     }
     .badge-dot {
       width: 6px; height: 6px;
-      background: var(--purple-light);
+      background: var(--green-light);
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
@@ -177,9 +179,9 @@
       border-radius: 100px;
       text-decoration: none;
       transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(124,58,237,0.4);
+      box-shadow: 0 8px 32px rgba(48,209,88,0.4);
     }
-    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(124,58,237,0.5); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(48,209,88,0.5); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -227,7 +229,7 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 2px;
-      color: var(--purple-light);
+      color: var(--green-light);
       margin-bottom: 14px;
     }
     .section-title {
@@ -258,13 +260,13 @@
       transition: border-color 0.25s, transform 0.25s;
     }
     .feature-card:hover {
-      border-color: rgba(124,58,237,0.4);
+      border-color: rgba(48,209,88,0.4);
       transform: translateY(-3px);
     }
     .feature-icon {
       width: 52px; height: 52px;
       border-radius: 14px;
-      background: var(--purple-dim);
+      background: var(--green-dim);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -318,13 +320,13 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: var(--purple-dim);
-      border: 1px solid rgba(124,58,237,0.3);
+      background: var(--green-dim);
+      border: 1px solid rgba(48,209,88,0.3);
       border-radius: 100px;
       padding: 7px 14px;
       font-size: 13px;
       font-weight: 600;
-      color: var(--purple-light);
+      color: var(--green-light);
     }
     .privacy-visual {
       background: var(--surface2);
@@ -363,7 +365,7 @@
       right: -12px;
       top: 40px;
       font-size: 20px;
-      color: var(--purple-light);
+      color: var(--green-light);
       opacity: 0.5;
     }
     @media (max-width: 600px) { .step:not(:last-child)::after { display: none; } }
@@ -421,7 +423,7 @@
       align-items: center;
       gap: 10px;
       background: white;
-      color: var(--purple);
+      color: var(--green);
       font-family: 'Inter', sans-serif;
       font-size: 16px;
       font-weight: 700;
@@ -460,14 +462,14 @@
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="logo">
-        <img src="appicon.png" class="logo-icon" alt="WatermarkIt App Icon">
-        WatermarkIt
+        <img src="appicon.png" class="logo-icon" alt="WatermarkIT App Icon">
+        WatermarkIT
       </a>
       <div class="nav-links">
         <a href="#features" class="nav-link">Features</a>
         <a href="#privacy" class="nav-link">Privacy</a>
         <a href="support.html" class="nav-link">Support</a>
-        <a href="#download" class="nav-cta">Download on the App Store</a>
+        <a href="#download" class="nav-cta">Get it Free</a>
       </div>
     </div>
   </nav>
@@ -477,13 +479,13 @@
     <div class="hero-glow"></div>
     <div class="badge">
       <span class="badge-dot"></span>
-      Now Available on the App Store
+      Version 1.1 — now free, now on iOS 18
     </div>
     <h1>Watermark your photos<br><span class="gradient-text">beautifully & privately</span></h1>
-    <p class="hero-sub">Add text or logo watermarks in seconds. Work on individual photos or batch multiple at once — all processed on your device, never in the cloud.</p>
+    <p class="hero-sub">Mark a photo with text, your logo, your own handwritten signature, or a scannable QR code — then tile it so there is no clean corner left to crop. Work one photo at a time or batch a whole shoot. Everything is processed on your device, never in the cloud.</p>
     <div class="hero-actions">
       <a href="#download" class="btn-primary" id="hero-download-btn">
-        Download on the App Store
+        Download Free on the App Store
       </a>
       <a href="#features" class="btn-secondary">See Features →</a>
     </div>
@@ -500,37 +502,57 @@
     <div class="section-inner">
       <div class="section-label">Features</div>
       <h2 class="section-title">Everything you need to protect your photos</h2>
-      <p class="section-sub">Powerful tools, zero complexity. WatermarkIt does one thing and does it exceptionally well.</p>
+      <p class="section-sub">Four ways to mark a photo, and one mark nobody can crop off. Powerful where it counts, simple everywhere else.</p>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">✏️</div>
           <h3>Text Watermarks</h3>
-          <p>Add custom text with full control over font (SF Pro, Helvetica, Arial, Georgia), size, color, and opacity. Drag to reposition freely on the canvas.</p>
+          <p>22 typefaces — sans, serif, monospace, script and handwriting — with full control over size, colour and opacity. Add a shadow or an outline so your mark stays readable on busy photos.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🖼️</div>
           <h3>Logo Watermarks</h3>
-          <p>Upload your own logo from your photo library. Scale from 10% to 200%, control opacity, and drag it anywhere on the image. PNG transparency supported.</p>
+          <p>Bring in your own logo and place it anywhere. Rotate a full 360°, flip it horizontally or vertically, and scale across a wide size range. PNG transparency supported.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <h3>Sign It by Hand</h3>
+          <p>Draw your signature straight onto the photo in any ink colour, with undo and redo. The closest thing to signing a print, without leaving your phone.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>QR Code Marks</h3>
+          <p>Turn a link into a scannable mark that points at your portfolio, your shop, or your licence terms. Generated entirely on your device — no server ever sees the URL.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧱</div>
+          <h3>Tiling</h3>
+          <p>Repeat your mark across the whole photo with adjustable spacing, so there is no clean corner left to crop out. The proofing standard, built in.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🪪</div>
+          <h3>Invisible Credit</h3>
+          <p>Write your name and copyright into the exported file's IPTC and TIFF fields. It travels with the file and survives cropping — a claim to the image even when the visible mark is gone.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Eight Built-In Presets</h3>
+          <p>Named for the job, not the settings: Client Proof, Confidential, Draft, Photo Credit, Social Handle, Tiled Proof, Date Stamp and Fine Print. Tap one and you are done.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📦</div>
           <h3>Batch Processing</h3>
-          <p>Select multiple photos and apply the same watermark to all of them simultaneously. Perfect for product shoots, portfolios, and social media sets.</p>
+          <p>Select multiple photos and apply the same mark to all of them at once. Perfect for product shoots, portfolios and social media sets.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎨</div>
           <h3>Reusable Templates</h3>
-          <p>Save your favorite watermark styles as named templates. Built-in starter templates are included — or create and save your own for one-tap reuse.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">👁️</div>
-          <h3>Live Preview</h3>
-          <p>Every change you make — font, size, color, opacity, position — updates the watermark preview instantly. What you see is exactly what gets exported.</p>
+          <p>Save your own watermark styles as named templates and reuse them with one tap. Reopen anything from Recent Work on the home screen and send it out again.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📤</div>
-          <h3>Flexible Export</h3>
-          <p>Export as JPEG or PNG in High or Medium quality. Save directly to your Camera Roll or share via AirDrop, Messages, Mail, and more.</p>
+          <h3>Export for Where It's Going</h3>
+          <p>JPEG, PNG or HEIC. Shapes for 1:1, 4:5, 9:16 and 16:9 with Fit or Fill. Original, Large or Web sizes with real dimensions and an estimated file size — and name the files yourself.</p>
         </div>
       </div>
     </div>
@@ -546,17 +568,42 @@
         <div class="step">
           <div class="step-num">1</div>
           <h3>Pick a Photo</h3>
-          <p>Choose from your library, select recent photos on the home screen, or import multiple photos for batch mode.</p>
+          <p>Choose from your library, take a new one with the camera, or import from Files. Recent Work on the home screen brings back anything you have already made.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
           <h3>Add Your Watermark</h3>
-          <p>Type your text or upload a logo. Adjust font, size, color, and opacity with live preview as you go.</p>
+          <p>Type your text, add a logo, sign by hand, or generate a QR code. Tap a preset to skip straight to a finished look, then tile it if you want full coverage.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <h3>Export & Share</h3>
-          <p>Save to Camera Roll in JPEG or PNG, or share directly via AirDrop, Messages, or any iOS share sheet.</p>
+          <p>Save to your Camera Roll in JPEG, PNG or HEIC — cropped to shape if you need it — or share straight out through any iOS share sheet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROP-PROOF CREDIT -->
+  <section style="padding-top: 0;">
+    <div class="section-inner">
+      <div class="privacy-section">
+        <div>
+          <div class="section-label">New in 1.1</div>
+          <h2>A mark they cannot crop off</h2>
+          <p>A visible watermark can be cropped, cloned out, or blurred away. So WatermarkIT also writes your name and copyright <strong style="color:#fff;">inside the photo file itself</strong> — into the standard IPTC and TIFF fields that photo editors, stock libraries and asset managers already read.</p>
+          <p style="margin-top:14px;">Crop the picture, and the credit is still there. It is your name, never ours, and you can switch it off for any export.</p>
+          <div class="privacy-pills">
+            <span class="pill">✓ Survives cropping</span>
+            <span class="pill">✓ Standard IPTC &amp; TIFF fields</span>
+            <span class="pill">✓ Written on your device</span>
+            <span class="pill">✓ Off with one tap</span>
+          </div>
+        </div>
+        <div class="privacy-visual">
+          <div class="privacy-big-icon">🪪</div>
+          <h3>Credit That Travels</h3>
+          <p>Your byline and copyright ride along with the file wherever it goes.</p>
         </div>
       </div>
     </div>
@@ -569,7 +616,7 @@
         <div>
           <div class="section-label">Privacy First</div>
           <h2>Your photos never leave your phone</h2>
-          <p>WatermarkIt processes everything entirely on your device. We absolutely commit that your photos are never accessed, uploaded, or stored by us under any circumstances.</p>
+          <p>WatermarkIT processes everything entirely on your device. We absolutely commit that your photos are never accessed, uploaded, or stored by us under any circumstances.</p>
           <div class="privacy-pills">
             <span class="pill">✓ On-device rendering</span>
             <span class="pill">✓ Privacy-first design</span>
@@ -589,9 +636,9 @@
   <!-- CTA / DOWNLOAD -->
   <div class="cta-section" id="download">
     <h2>Start watermarking today</h2>
-    <p>Download WatermarkIt and start protecting your photos with beautiful, private watermarks.</p>
+    <p>WatermarkIT is free on the App Store, and runs on iOS 18 and later. No account, no cloud, no catch.</p>
     <a href="https://apps.apple.com/app/id6797597563" class="btn-white" id="app-store-link">
-      Download on the App Store
+      Download Free on the App Store
     </a>
   </div>
 
@@ -599,14 +646,14 @@
   <footer>
     <div class="footer-inner">
       <a href="index.html" class="footer-logo">
-        <img src="appicon.png" class="logo-icon" style="width:30px;height:30px;border-radius:6px;" alt="WatermarkIt Logo">
-        WatermarkIt
+        <img src="appicon.png" class="logo-icon" style="width:30px;height:30px;border-radius:6px;" alt="WatermarkIT Logo">
+        WatermarkIT
       </a>
       <div class="footer-links">
         <a href="support.html">Support</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
-      <p class="footer-copy">© <span id="yr-index"></span> WatermarkIt. Made with ❤️ for iOS. All rights reserved.</p>
+      <p class="footer-copy">© <span id="yr-index"></span> WatermarkIT. Made with ❤️ for iOS. All rights reserved.</p>
     </div>
   </footer>
 

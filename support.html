@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WatermarkIt — Support</title>
+  <title>WatermarkIT — Support</title>
   <meta name="description"
-    content="Get help with WatermarkIt — the fast, private iOS watermarking app. Browse FAQs or contact us directly." />
+    content="Get help with WatermarkIT — the free, private iOS watermarking app. Browse FAQs or contact us directly." />
+  <link rel="icon" type="image/png" href="appicon.png" />
+  <link rel="apple-touch-icon" href="appicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -21,16 +23,16 @@
     }
 
     :root {
-      --purple: #7C3AED;
-      --purple-light: #8B5CF6;
-      --purple-dark: #4C1D95;
-      --gradient: linear-gradient(135deg, #4A00E0 0%, #8E2DE2 100%);
-      --bg: #0A0A0F;
-      --surface: #13131A;
-      --surface2: #1C1C28;
+      --green: #0B8340;
+      --green-light: #30D158;
+      --green-dark: #04331A;
+      --gradient: linear-gradient(135deg, #04642F 0%, #0B8340 100%);
+      --bg: #0C0C0E;
+      --surface: #161618;
+      --surface2: #1D1D20;
       --border: rgba(255, 255, 255, 0.08);
-      --text: #F0F0F8;
-      --muted: #8888AA;
+      --text: #F0F0F2;
+      --muted: #98989E;
       --radius: 16px;
     }
 
@@ -162,7 +164,7 @@
     }
 
     .card:hover {
-      border-color: var(--purple-light);
+      border-color: var(--green-light);
       transform: translateY(-2px);
     }
 
@@ -170,7 +172,7 @@
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: rgba(124, 58, 237, 0.18);
+      background: rgba(48, 209, 88, 0.18);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -218,7 +220,7 @@
     }
 
     .faq-question:hover {
-      color: var(--purple-light);
+      color: var(--green-light);
     }
 
     .faq-arrow {
@@ -243,11 +245,11 @@
 
     .faq-item.open .faq-arrow {
       transform: rotate(180deg);
-      background: rgba(124, 58, 237, 0.2);
+      background: rgba(48, 209, 88, 0.2);
     }
 
     .faq-item.open .faq-arrow svg {
-      stroke: var(--purple-light);
+      stroke: var(--green-light);
     }
 
     .faq-answer {
@@ -317,7 +319,7 @@
     }
 
     footer a {
-      color: var(--purple-light);
+      color: var(--green-light);
       text-decoration: none;
     }
 
@@ -332,8 +334,8 @@
   <nav>
     <div class="nav-inner">
       <a href="index.html" class="logo">
-        <img src="appicon.png" class="logo-icon" alt="WatermarkIt App Icon">
-        WatermarkIt
+        <img src="appicon.png" class="logo-icon" alt="WatermarkIT App Icon">
+        WatermarkIT
       </a>
       <a href="privacy.html" class="nav-link">Privacy Policy</a>
     </div>
@@ -352,7 +354,7 @@
       <div class="card">
         <div class="card-icon">🖼️</div>
         <h3>Add a Watermark</h3>
-        <p>Tap "Pick a Photo", choose your image, then type your text or upload a logo in the editor.</p>
+        <p>Tap "Pick a Photo" — or import from your camera or Files — then add text, a logo, a signature or a QR code in the editor.</p>
       </div>
       <div class="card">
         <div class="card-icon">📦</div>
@@ -367,7 +369,7 @@
       <div class="card">
         <div class="card-icon">📤</div>
         <h3>Export & Share</h3>
-        <p>Tap Export, choose quality (High/Medium) and format (JPEG/PNG), then save or share directly.</p>
+        <p>Tap Export, choose your quality, format (JPEG/PNG/HEIC) and shape, then save to your Camera Roll or share directly.</p>
       </div>
     </div>
 
@@ -382,7 +384,7 @@
               <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
             </svg></span>
         </button>
-        <div class="faq-answer">No. WatermarkIt processes everything 100% on your device. Your photos are never
+        <div class="faq-answer">No. WatermarkIT processes everything 100% on your device. Your photos are never
           uploaded, sent to a server, or shared with anyone. All processing happens entirely on your device.</div>
       </div>
 
@@ -416,9 +418,9 @@
               <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
             </svg></span>
         </button>
-        <div class="faq-answer">WatermarkIt exports in JPEG (smaller file size, great for social media) and PNG
-          (lossless quality, preserves logo transparency). You can also choose between High and Medium quality for JPEG
-          exports.</div>
+        <div class="faq-answer">WatermarkIT exports in JPEG (widest compatibility), PNG (lossless, preserves logo
+          transparency) and HEIC (same quality at a smaller size). You can also pick an export shape — 1:1, 4:5, 9:16 or
+          16:9, with Fit or Fill — choose Original, Large or Web dimensions, and name the exported files yourself.</div>
       </div>
 
       <div class="faq-item">
@@ -440,7 +442,7 @@
               <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
             </svg></span>
         </button>
-        <div class="faq-answer">WatermarkIt needs read access to let you pick photos to watermark, and write access to
+        <div class="faq-answer">WatermarkIT needs read access to let you pick photos to watermark, and write access to
           save the watermarked result back to your camera roll. We only access the photos you explicitly select —
           nothing else.</div>
       </div>
@@ -463,7 +465,80 @@
               <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
             </svg></span>
         </button>
-        <div class="faq-answer">WatermarkIt requires iOS 26.0 or later, compatible with iPhone and iPad.</div>
+        <div class="faq-answer">WatermarkIT requires iOS 18.0 or later, and works on both iPhone and iPad. Version 1.1 lowered the requirement from iOS 26 — if the App Store previously told you your device was not supported, it is worth another look.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What is new in version 1.1?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Version 1.1 adds four new ways to mark a photo: a hand-drawn signature, a scannable QR
+          code, tiling that repeats your mark across the whole image, and an invisible copyright written into the file's
+          metadata. It also brings 22 typefaces (up from 4), shadow and outline, a full colour picker, 360° rotation and
+          flipping, HEIC export, export shapes, eight built-in presets, camera and Files import, and Recent Work on the
+          home screen. WatermarkIT is now free and runs on iOS 18 and later.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How do I draw my own signature?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">In the editor, switch to the Signature tab and draw directly on the photo with your
+          finger or Apple Pencil. Pick any ink colour, and use undo and redo to fix a stroke without starting over.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          What is the invisible copyright, and does it really survive cropping?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Yes. Alongside the visible mark, WatermarkIT can write your name and copyright into the
+          exported file's IPTC and TIFF fields — the standard places photo software looks for authorship. Because that
+          data lives in the file rather than in the pixels, cropping the image does not remove it. It is your own name,
+          never ours, and you can turn it off for any export in Settings or on the Export sheet. Note that some social
+          platforms strip metadata when they re-encode uploads, so treat it as a strong claim to your work rather than
+          an unbreakable lock.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Does the QR code send my link anywhere?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">No. The QR code is generated entirely on your device using Apple's built-in Core Image
+          tools. Your link is never sent to us or to any third-party service.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          How do I cover the whole photo so it cannot be cropped out?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Turn on Tiling to repeat your mark across the entire image, and adjust the spacing to
+          taste. The Tiled Proof preset sets this up for you in one tap.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          Is WatermarkIT free?
+          <span class="faq-arrow"><svg viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></span>
+        </button>
+        <div class="faq-answer">Yes — WatermarkIT is free to download from the App Store, with no account required and
+          no cloud service behind it.</div>
       </div>
 
     </div>
@@ -485,7 +560,7 @@
   </div>
 
   <footer>
-    <p>© <span id="yr-support"></span> WatermarkIt · <a href="privacy.html">Privacy Policy</a> · Made with ❤️ for iOS
+    <p>© <span id="yr-support"></span> WatermarkIT · <a href="privacy.html">Privacy Policy</a> · Made with ❤️ for iOS
     </p>
   </footer>
 
