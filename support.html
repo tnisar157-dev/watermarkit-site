@@ -326,6 +326,35 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* ── i18n ───────────────────────────────────── */
+    .langpick {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 12px;
+      cursor: pointer;
+      appearance: none;
+    }
+    .langpick:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; }
+    .trans-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      border-inline-start: 2px solid var(--border);
+      padding-inline-start: 12px;
+      margin-bottom: 28px;
+    }
+    .trans-note:empty { display: none; }
+    [dir="rtl"] .faq-question { text-align: right; }
+    :lang(ar) body { font-family: 'Inter', 'Geeza Pro', system-ui, sans-serif; }
+    :lang(ja) body { font-family: 'Inter', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; }
+    :lang(zh-Hans) body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+    :lang(zh-Hant) body { font-family: 'Inter', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif; }
   </style>
 </head>
 
@@ -337,216 +366,136 @@
         <img src="appicon.png" class="logo-icon" alt="WatermarkIT App Icon">
         WatermarkIT
       </a>
-      <a href="privacy.html" class="nav-link">Privacy Policy</a>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="privacy.html" class="nav-link" data-i18n="nav.privacy"></a>
+        <select class="langpick" id="langpick">
+          <option value="en">English</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="ar">العربية</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </div>
   </nav>
 
   <div class="hero">
-    <h1>How can we help?</h1>
-    <p>Find answers to common questions or get in touch with us directly.</p>
+    <h1 data-i18n="hero.title"></h1>
+    <p data-i18n="hero.sub"></p>
   </div>
 
   <div class="content">
 
-    <!-- Quick Links -->
-    <div class="section-title">Quick Help</div>
+    <p class="trans-note" data-i18n="trans.note"></p>
+
+    <div class="section-title" data-i18n="quick.title"></div>
     <div class="cards">
-      <div class="card">
-        <div class="card-icon">🖼️</div>
-        <h3>Add a Watermark</h3>
-        <p>Tap "Pick a Photo" — or import from your camera or Files — then add text, a logo, a signature or a QR code in the editor.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <h3>Batch Mode</h3>
-        <p>Tap "Batch Import" on the home screen to select multiple photos and apply the same watermark to all.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <h3>Save Templates</h3>
-        <p>Open Templates, tap +, design your style, then tap Export → Save as Template to reuse it anytime.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📤</div>
-        <h3>Export & Share</h3>
-        <p>Tap Export, choose your quality, format (JPEG/PNG/HEIC) and shape, then save to your Camera Roll or share directly.</p>
-      </div>
+        <div class="card">
+          <div class="card-icon">🖼️</div>
+          <h3 data-i18n="c1.h"></h3>
+          <p data-i18n="c1.p"></p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <h3 data-i18n="c2.h"></h3>
+          <p data-i18n="c2.p"></p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3 data-i18n="c3.h"></h3>
+          <p data-i18n="c3.p"></p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📤</div>
+          <h3 data-i18n="c4.h"></h3>
+          <p data-i18n="c4.p"></p>
+        </div>
     </div>
 
-    <!-- FAQ -->
-    <div class="section-title">Frequently Asked Questions</div>
+    <div class="section-title" data-i18n="faq.title"></div>
     <div class="faq">
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Are my photos uploaded to the internet?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">No. WatermarkIT processes everything 100% on your device. Your photos are never
-          uploaded, sent to a server, or shared with anyone. All processing happens entirely on your device.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          How many photos can I watermark at once?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">In Batch mode, you can select multiple photos at once. For single photos, use the "Pick
-          a Photo" button on the home screen — repeat as many times as you need.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Can I use my own logo as a watermark?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Yes! In the editor, switch to the "Logo" tab and tap "Upload Logo" to import any image
-          from your photo library. You can resize, reposition, and set the opacity of your logo. PNG files with
-          transparency work best.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          What export formats are supported?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">WatermarkIT exports in JPEG (widest compatibility), PNG (lossless, preserves logo
-          transparency) and HEIC (same quality at a smaller size). You can also pick an export shape — 1:1, 4:5, 9:16 or
-          16:9, with Fit or Fill — choose Original, Large or Web dimensions, and name the exported files yourself.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Can I save my watermark style for later?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Absolutely. Tap the Templates icon in the editor, then tap + to open a new template
-          editor. Design your style and save it with a name. It will appear in "My Templates" on the Templates screen
-          for quick access anytime.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          The app is asking for photo library access. Why?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">WatermarkIT needs read access to let you pick photos to watermark, and write access to
-          save the watermarked result back to your camera roll. We only access the photos you explicitly select —
-          nothing else.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          How do I delete a custom template?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">On the Templates screen, press and hold any template card in "My Templates". A context
-          menu will appear with a Delete option. Note: built-in templates cannot be deleted.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          What iOS version is required?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">WatermarkIT requires iOS 18.0 or later, and works on both iPhone and iPad. Version 1.1 lowered the requirement from iOS 26 — if the App Store previously told you your device was not supported, it is worth another look.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          What is new in version 1.1?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Version 1.1 adds four new ways to mark a photo: a hand-drawn signature, a scannable QR
-          code, tiling that repeats your mark across the whole image, and an invisible copyright written into the file's
-          metadata. It also brings 22 typefaces (up from 4), shadow and outline, a full colour picker, 360° rotation and
-          flipping, HEIC export, export shapes, eight built-in presets, camera and Files import, and Recent Work on the
-          home screen. WatermarkIT is now free and runs on iOS 18 and later.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          How do I draw my own signature?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">In the editor, switch to the Signature tab and draw directly on the photo with your
-          finger or Apple Pencil. Pick any ink colour, and use undo and redo to fix a stroke without starting over.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          What is the invisible copyright, and does it really survive cropping?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Yes. Alongside the visible mark, WatermarkIT can write your name and copyright into the
-          exported file's IPTC and TIFF fields — the standard places photo software looks for authorship. Because that
-          data lives in the file rather than in the pixels, cropping the image does not remove it. It is your own name,
-          never ours, and you can turn it off for any export in Settings or on the Export sheet. Note that some social
-          platforms strip metadata when they re-encode uploads, so treat it as a strong claim to your work rather than
-          an unbreakable lock.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Does the QR code send my link anywhere?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">No. The QR code is generated entirely on your device using Apple's built-in Core Image
-          tools. Your link is never sent to us or to any third-party service.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          How do I cover the whole photo so it cannot be cropped out?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Turn on Tiling to repeat your mark across the entire image, and adjust the spacing to
-          taste. The Tiled Proof preset sets this up for you in one tap.</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggle(this)">
-          Is WatermarkIT free?
-          <span class="faq-arrow"><svg viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></span>
-        </button>
-        <div class="faq-answer">Yes — WatermarkIT is free to download from the App Store, with no account required and
-          no cloud service behind it.</div>
-      </div>
-
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q1"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a1"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q2"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a2"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q3"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a3"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q4"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a4"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q5"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a5"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q6"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a6"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q7"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a7"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q8"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a8"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q9"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a9"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q10"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a10"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggle(this)">
+            <span data-i18n="q11"></span>
+            <span class="faq-arrow"><svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </button>
+          <div class="faq-answer" data-i18n="a11"></div>
+        </div>
     </div>
 
-    <!-- Contact -->
     <div class="contact-box">
-      <h2>Still need help?</h2>
-      <p>Can't find what you're looking for? Send us an email and we'll get back to you as soon as possible.</p>
+      <h2 data-i18n="contact.h"></h2>
+      <p data-i18n="contact.p"></p>
       <a href="mailto:tnisar157@gmail.com" class="btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -560,20 +509,294 @@
   </div>
 
   <footer>
-    <p>© <span id="yr-support"></span> WatermarkIT · <a href="privacy.html">Privacy Policy</a> · Made with ❤️ for iOS
-    </p>
+    <p>© <span id="yr-support"></span> WatermarkIT · <a href="privacy.html" data-i18n="footer.privacy"></a> · <span data-i18n="footer.made"></span></p>
   </footer>
 
-  <script>
-    function toggle(btn) {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    }
-    document.getElementById('yr-support').textContent = new Date().getFullYear();
-  </script>
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
 
+  // Translations. English is the source text and stays authoritative.
+  const I18N = {
+ "en": {
+  "nav.privacy": "Privacy Policy",
+  "lang.label": "Language",
+  "trans.note": "",
+  "hero.title": "How can we help?",
+  "hero.sub": "Find answers to common questions or get in touch with us directly.",
+  "quick.title": "Quick Help",
+  "c1.h": "Add a Watermark",
+  "c1.p": "Tap “Pick a Photo” — or import from your camera or Files — then add text, a logo, a signature or a QR code in the editor.",
+  "c2.h": "Batch Mode",
+  "c2.p": "Tap “Batch Import” on the home screen to select multiple photos and apply the same watermark to all.",
+  "c3.h": "Save Templates",
+  "c3.p": "Open Templates, tap +, design your style, then tap Export → Save as Template to reuse it anytime.",
+  "c4.h": "Export &amp; Share",
+  "c4.p": "Tap Export, choose your quality, format (JPEG/PNG/HEIC) and shape, then save to your Camera Roll or share directly.",
+  "faq.title": "Frequently Asked Questions",
+  "q1": "Are my photos uploaded to the internet?",
+  "a1": "No. WatermarkIT processes everything 100% on your device. Your photos are never uploaded, sent to a server, or shared with anyone. All processing happens entirely on your device.",
+  "q2": "How many photos can I watermark at once?",
+  "a2": "In Batch mode, you can select multiple photos at once. For single photos, use the “Pick a Photo” button on the home screen — repeat as many times as you need.",
+  "q3": "Can I use my own logo as a watermark?",
+  "a3": "Yes! In the editor, switch to the “Logo” tab and tap “Upload Logo” to import any image from your photo library. You can resize, reposition, and set the opacity of your logo. PNG files with transparency work best.",
+  "q4": "What export formats are supported?",
+  "a4": "WatermarkIT exports in JPEG (widest compatibility), PNG (lossless, preserves logo transparency) and HEIC (same quality at a smaller size). You can also pick an export shape — 1:1, 4:5, 9:16 or 16:9, with Fit or Fill — choose Original, Large or Web dimensions, and name the exported files yourself.",
+  "q5": "Can I save my watermark style for later?",
+  "a5": "Absolutely. Tap the Templates icon in the editor, then tap + to open a new template editor. Design your style and save it with a name. It will appear in “My Templates” on the Templates screen for quick access anytime.",
+  "q6": "The app is asking for photo library access. Why?",
+  "a6": "WatermarkIT needs read access to let you pick photos to watermark, and write access to save the watermarked result back to your camera roll. We only access the photos you explicitly select — nothing else.",
+  "q7": "How do I delete a custom template?",
+  "a7": "On the Templates screen, press and hold any template card in “My Templates”. A context menu will appear with a Delete option. Note: built-in templates cannot be deleted.",
+  "q8": "What iOS version is required?",
+  "a8": "WatermarkIT requires iOS 18.0 or later, and works on both iPhone and iPad. Version 1.1 lowered the requirement from iOS 26 — if the App Store previously told you your device was not supported, it is worth another look.",
+  "q9": "What is new in version 1.1?",
+  "a9": "Version 1.1 adds four new ways to mark a photo: a hand-drawn signature, a scannable QR code, tiling that repeats your mark across the whole image, and an invisible copyright written into the file’s metadata. It also brings 22 typefaces (up from 4), shadow and outline, a full colour picker, 360° rotation and flipping, HEIC export, export shapes, eight built-in presets, camera and Files import, and Recent Work on the home screen. WatermarkIT is now free and runs on iOS 18 and later.",
+  "q10": "How do I draw my own signature?",
+  "a10": "In the editor, switch to the Signature tab and draw directly on the photo with your finger or Apple Pencil. Pick any ink colour, and use undo and redo to fix a stroke without starting over.",
+  "q11": "What is the invisible copyright, and does it really survive cropping?",
+  "a11": "Yes. Alongside the visible mark, WatermarkIT can write your name and copyright into the exported file’s IPTC and TIFF fields — the standard places photo software looks for authorship. Because that data lives in the file rather than in the pixels, cropping the image does not remove it. It is your own name, never ours, and you can turn it off for any export in Settings or on the Export sheet. Note that some social platforms strip metadata when they re-encode uploads, so treat it as a strong claim to your work rather than an unbreakable lock.",
+  "contact.h": "Still need help?",
+  "contact.p": "Can’t find what you’re looking for? Send us an email and we’ll get back to you as soon as possible.",
+  "footer.privacy": "Privacy Policy",
+  "footer.made": "Made with ❤️ for iOS"
+ },
+ "ar": {
+  "nav.privacy": "سياسة الخصوصية",
+  "lang.label": "اللغة",
+  "trans.note": "هذه الترجمة مقدّمة للتسهيل فقط، والنسخة الإنجليزية هي المرجع المعتمد.",
+  "hero.title": "كيف يمكننا مساعدتك؟",
+  "hero.sub": "اعثر على إجابات للأسئلة الشائعة أو تواصل معنا مباشرة.",
+  "quick.title": "مساعدة سريعة",
+  "c1.h": "إضافة علامة مائية",
+  "c1.p": "اضغط على «اختيار صورة» — أو استورد من الكاميرا أو الملفات — ثم أضف نصًا أو شعارًا أو توقيعًا أو رمز QR في المحرر.",
+  "c2.h": "الوضع الدفعي",
+  "c2.p": "اضغط على «استيراد دفعة» في الشاشة الرئيسية لتحديد عدة صور وتطبيق العلامة نفسها عليها جميعًا.",
+  "c3.h": "حفظ القوالب",
+  "c3.p": "افتح القوالب، اضغط +، صمّم نمطك، ثم اضغط تصدير ← حفظ كقالب لإعادة استخدامه في أي وقت.",
+  "c4.h": "التصدير والمشاركة",
+  "c4.p": "اضغط تصدير، واختر الجودة والصيغة (JPEG/PNG/HEIC) والشكل، ثم احفظ في ألبوم الصور أو شارك مباشرة.",
+  "faq.title": "الأسئلة الشائعة",
+  "q1": "هل تُرفع صوري إلى الإنترنت؟",
+  "a1": "لا. يعالج WatermarkIT كل شيء على جهازك بنسبة 100%. لا تُرفع صورك أبدًا ولا تُرسل إلى خادم ولا تُشارك مع أي جهة. تتم كل المعالجة على جهازك بالكامل.",
+  "q2": "كم عدد الصور التي يمكنني وضع علامة عليها دفعة واحدة؟",
+  "a2": "في الوضع الدفعي يمكنك تحديد عدة صور معًا. أما للصور المفردة فاستخدم زر «اختيار صورة» في الشاشة الرئيسية، وكرّر ذلك بقدر ما تحتاج.",
+  "q3": "هل يمكنني استخدام شعاري الخاص كعلامة مائية؟",
+  "a3": "نعم! في المحرر، انتقل إلى تبويب «الشعار» واضغط «رفع شعار» لاستيراد أي صورة من مكتبتك. يمكنك تغيير الحجم والموضع والشفافية. وملفات PNG ذات الخلفية الشفافة هي الأنسب.",
+  "q4": "ما صيغ التصدير المدعومة؟",
+  "a4": "يصدّر WatermarkIT بصيغة JPEG (الأوسع توافقًا) وPNG (بلا فقد، ويحافظ على شفافية الشعار) وHEIC (الجودة نفسها بحجم أصغر). كما يمكنك اختيار شكل التصدير — 1:1 أو 4:5 أو 9:16 أو 16:9 مع ملاءمة أو ملء — واختيار أبعاد أصلية أو كبيرة أو للويب، وتسمية الملفات بنفسك.",
+  "q5": "هل يمكنني حفظ نمط العلامة لاستخدامه لاحقًا؟",
+  "a5": "بالتأكيد. اضغط أيقونة القوالب في المحرر، ثم اضغط + لفتح محرر قالب جديد. صمّم نمطك واحفظه باسم، وسيظهر في «قوالبي» في شاشة القوالب للوصول السريع في أي وقت.",
+  "q6": "لماذا يطلب التطبيق الوصول إلى مكتبة الصور؟",
+  "a6": "يحتاج WatermarkIT إلى إذن القراءة لتتمكّن من اختيار الصور، وإلى إذن الكتابة لحفظ النتيجة في ألبوم الصور. ولا نصل إلا إلى الصور التي تحددها صراحة، لا غير.",
+  "q7": "كيف أحذف قالبًا مخصصًا؟",
+  "a7": "في شاشة القوالب، اضغط مطوّلًا على أي بطاقة قالب ضمن «قوالبي»، وستظهر قائمة تتضمن خيار الحذف. ملاحظة: لا يمكن حذف القوالب المدمجة.",
+  "q8": "ما إصدار iOS المطلوب؟",
+  "a8": "يتطلب WatermarkIT الإصدار iOS 18.0 أو أحدث، ويعمل على iPhone وiPad. وقد خفّض الإصدار 1.1 المتطلب من iOS 26 — فإذا أخبرك App Store سابقًا بأن جهازك غير مدعوم، فالأمر يستحق المحاولة مجددًا.",
+  "q9": "ما الجديد في الإصدار 1.1؟",
+  "a9": "يضيف الإصدار 1.1 أربع طرق جديدة لوضع علامة على صورة: توقيع مرسوم باليد، ورمز QR قابل للمسح، وتكرار يوزّع علامتك على الصورة كاملة، وحقوق نشر غير مرئية تُكتب في بيانات الملف. كما يوفّر 22 خطًا (بدلًا من 4)، وظلًا وحدودًا، ومنتقي ألوان كاملًا، ودورانًا 360° وقلبًا، وتصدير HEIC، وأشكال تصدير، وثمانية إعدادات مسبقة، واستيرادًا من الكاميرا والملفات، والأعمال الأخيرة في الشاشة الرئيسية. وأصبح WatermarkIT مجانيًا ويعمل على iOS 18 وأحدث.",
+  "q10": "كيف أرسم توقيعي؟",
+  "a10": "في المحرر، انتقل إلى تبويب التوقيع وارسم مباشرة على الصورة بإصبعك أو بقلم Apple Pencil. اختر أي لون حبر، واستخدم التراجع والإعادة لتصحيح خط دون البدء من جديد.",
+  "q11": "ما حقوق النشر غير المرئية، وهل تصمد فعلًا أمام الاقتصاص؟",
+  "a11": "نعم. إلى جانب العلامة المرئية، يمكن لـ WatermarkIT كتابة اسمك وحقوق النشر في حقلي IPTC وTIFF بالملف المُصدَّر، وهما المكانان القياسيان اللذان تبحث فيهما برامج الصور عن نسبة العمل. ولأن هذه البيانات موجودة في الملف لا في وحدات البكسل، فإن اقتصاص الصورة لا يزيلها. إنه اسمك أنت لا اسمنا، ويمكنك إيقافه لأي تصدير من الإعدادات أو من ورقة التصدير. لاحظ أن بعض منصات التواصل تحذف البيانات عند إعادة ترميز الملفات المرفوعة، فاعتبره إثباتًا قويًا لعملك لا قفلًا لا يُكسر.",
+  "contact.h": "ما زلت بحاجة إلى مساعدة؟",
+  "contact.p": "لم تجد ما تبحث عنه؟ راسلنا بالبريد الإلكتروني وسنرد عليك في أقرب وقت ممكن.",
+  "footer.privacy": "سياسة الخصوصية",
+  "footer.made": "صُنع بـ ❤️ لـ iOS"
+ },
+ "ja": {
+  "nav.privacy": "プライバシーポリシー",
+  "lang.label": "言語",
+  "trans.note": "この翻訳は便宜上のものであり、正文は英語版です。",
+  "hero.title": "お困りですか？",
+  "hero.sub": "よくある質問から答えを探すか、直接お問い合わせください。",
+  "quick.title": "クイックヘルプ",
+  "c1.h": "透かしを入れる",
+  "c1.p": "「写真を選ぶ」をタップ（カメラや「ファイル」からの読み込みも可能）し、エディタでテキスト、ロゴ、署名、QR コードを追加します。",
+  "c2.h": "バッチモード",
+  "c2.p": "ホーム画面で「バッチ読み込み」をタップし、複数の写真を選んで同じ透かしをまとめて適用します。",
+  "c3.h": "テンプレートを保存",
+  "c3.p": "テンプレートを開き、+ をタップしてスタイルを作成し、書き出し →「テンプレートとして保存」でいつでも再利用できます。",
+  "c4.h": "書き出しと共有",
+  "c4.p": "書き出しをタップし、品質・フォーマット（JPEG／PNG／HEIC）・形状を選んで、カメラロールに保存するか直接共有します。",
+  "faq.title": "よくある質問",
+  "q1": "写真はインターネットにアップロードされますか？",
+  "a1": "いいえ。WatermarkIT はすべてを 100% お使いのデバイス内で処理します。写真がアップロードされたり、サーバーに送信されたり、誰かと共有されたりすることはありません。処理はすべてデバイス内で完結します。",
+  "q2": "一度に何枚の写真に透かしを入れられますか？",
+  "a2": "バッチモードでは複数の写真をまとめて選択できます。1 枚ずつの場合はホーム画面の「写真を選ぶ」から、必要な回数だけ繰り返してください。",
+  "q3": "自分のロゴを透かしに使えますか？",
+  "a3": "はい。エディタで「ロゴ」タブに切り替え、「ロゴをアップロード」をタップすると写真ライブラリから任意の画像を読み込めます。サイズ、位置、不透明度を調整できます。透過のある PNG が最適です。",
+  "q4": "対応している書き出し形式は？",
+  "a4": "WatermarkIT は JPEG（最も互換性が高い）、PNG（可逆圧縮でロゴの透過を保持）、HEIC（同じ画質でファイルサイズが小さい）で書き出せます。書き出し形状（1:1、4:5、9:16、16:9、フィットまたはフィル）も選べるほか、オリジナル／ラージ／Web のサイズを選び、ファイル名を自分で付けられます。",
+  "q5": "透かしのスタイルを保存しておけますか？",
+  "a5": "もちろんです。エディタでテンプレートアイコンをタップし、+ で新しいテンプレートエディタを開きます。スタイルを作って名前を付けて保存すると、テンプレート画面の「マイテンプレート」からいつでもすぐに使えます。",
+  "q6": "写真ライブラリへのアクセスを求められるのはなぜですか？",
+  "a6": "透かしを入れる写真を選ぶために読み取り権限が、結果をカメラロールに保存するために書き込み権限が必要です。アクセスするのはお客様が明示的に選んだ写真だけで、それ以外には一切アクセスしません。",
+  "q7": "カスタムテンプレートを削除するには？",
+  "a7": "テンプレート画面で「マイテンプレート」内のカードを長押しすると、削除オプションを含むメニューが表示されます。なお、組み込みのテンプレートは削除できません。",
+  "q8": "必要な iOS のバージョンは？",
+  "a8": "WatermarkIT には iOS 18.0 以降が必要で、iPhone と iPad の両方で動作します。バージョン 1.1 で必要要件を iOS 26 から引き下げました。以前 App Store で「お使いのデバイスは対応していません」と表示された方も、もう一度お試しください。",
+  "q9": "バージョン 1.1 の新機能は？",
+  "a9": "バージョン 1.1 では、写真に印を付ける方法が 4 つ増えました。手書きの署名、読み取り可能な QR コード、画像全体に印を繰り返すタイル表示、そしてファイルのメタデータに書き込まれる目に見えない著作権表示です。さらに 22 種類の書体（従来は 4 種類）、影と縁取り、フルカラーピッカー、360° 回転と反転、HEIC 書き出し、書き出し形状、8 種類のプリセット、カメラと「ファイル」からの読み込み、ホーム画面の「最近の作業」も追加されました。WatermarkIT は無料になり、iOS 18 以降で動作します。",
+  "q10": "自分の署名を手書きするには？",
+  "a10": "エディタで「署名」タブに切り替え、指または Apple Pencil で写真に直接描きます。インクの色は自由に選べ、取り消しとやり直しで一筆だけ描き直せます。",
+  "q11": "目に見えない著作権表示とは何ですか。本当にトリミングされても残りますか？",
+  "a11": "はい。目に見える透かしとは別に、WatermarkIT は書き出したファイルの IPTC および TIFF フィールド（写真ソフトが作者情報を探す標準的な場所）にお名前と著作権表示を書き込めます。このデータはピクセルではなくファイル自体に保存されるため、画像をトリミングしても消えません。書き込まれるのは当方ではなくお客様ご自身の名前で、設定または書き出し画面でいつでもオフにできます。ただし一部の SNS はアップロードを再エンコードする際にメタデータを削除するため、破れない鍵ではなく、著作権を強く主張する手段とお考えください。",
+  "contact.h": "まだ解決しませんか？",
+  "contact.p": "お探しの情報が見つからない場合は、メールでお問い合わせください。できるだけ早くご返信します。",
+  "footer.privacy": "プライバシーポリシー",
+  "footer.made": "iOS のために ❤️ を込めて"
+ },
+ "zh-Hans": {
+  "nav.privacy": "隐私政策",
+  "lang.label": "语言",
+  "trans.note": "本译文仅供参考，以英文版为准。",
+  "hero.title": "需要什么帮助？",
+  "hero.sub": "查找常见问题的答案，或直接与我们联系。",
+  "quick.title": "快速帮助",
+  "c1.h": "添加水印",
+  "c1.p": "点按“选择照片”——也可从相机或“文件”导入——然后在编辑器中添加文字、徽标、签名或二维码。",
+  "c2.h": "批量模式",
+  "c2.p": "在主屏幕点按“批量导入”，选择多张照片并对全部应用同一个水印。",
+  "c3.h": "保存模板",
+  "c3.p": "打开模板，点按 +，设计你的样式，然后点按导出 →“存储为模板”，随时重复使用。",
+  "c4.h": "导出与分享",
+  "c4.p": "点按导出，选择质量、格式（JPEG／PNG／HEIC）和形状，然后保存到相册或直接分享。",
+  "faq.title": "常见问题",
+  "q1": "我的照片会被上传到网络吗？",
+  "a1": "不会。WatermarkIT 百分之百在你的设备上完成所有处理。你的照片绝不会被上传、发送到服务器或分享给任何人。所有处理都完全在设备端进行。",
+  "q2": "一次可以给多少张照片加水印？",
+  "a2": "在批量模式下可以一次选择多张照片。单张处理时，请使用主屏幕的“选择照片”按钮，按需重复即可。",
+  "q3": "可以用我自己的徽标作为水印吗？",
+  "a3": "当然可以！在编辑器中切换到“徽标”标签，点按“上传徽标”即可从照片图库导入任意图片。你可以调整大小、位置和不透明度。带透明背景的 PNG 效果最佳。",
+  "q4": "支持哪些导出格式？",
+  "a4": "WatermarkIT 支持导出为 JPEG（兼容性最广）、PNG（无损，保留徽标透明度）和 HEIC（同等画质、体积更小）。你还可以选择导出形状——1:1、4:5、9:16 或 16:9，并选择适应或填充——选择原始、大图或网页尺寸，并自行命名导出的文件。",
+  "q5": "可以保存水印样式以便日后使用吗？",
+  "a5": "完全可以。在编辑器中点按模板图标，再点按 + 打开新的模板编辑器。设计好样式并命名保存后，它会出现在模板界面的“我的模板”中，随时快速取用。",
+  "q6": "App 为什么要请求访问照片图库？",
+  "a6": "WatermarkIT 需要读取权限以便你挑选要加水印的照片，需要写入权限以便把加好水印的结果保存回相册。我们只访问你明确选择的照片，别无其他。",
+  "q7": "如何删除自定模板？",
+  "a7": "在模板界面，长按“我的模板”中的任意模板卡片，会弹出包含删除选项的菜单。请注意：内置模板无法删除。",
+  "q8": "需要什么版本的 iOS？",
+  "a8": "WatermarkIT 需要 iOS 18.0 或更高版本，iPhone 和 iPad 均可使用。1.1 版本已将要求从 iOS 26 下调——如果 App Store 之前提示你的设备不受支持，不妨再试一次。",
+  "q9": "1.1 版本有哪些新功能？",
+  "a9": "1.1 版本新增了四种给照片加标记的方式：手写签名、可扫描的二维码、将标记平铺到整张图片，以及写入文件元数据的隐形版权信息。此外还带来 22 种字体（原为 4 种）、阴影与描边、完整的取色器、360° 旋转与翻转、HEIC 导出、导出形状、八种内置预设、相机与“文件”导入，以及主屏幕上的最近作品。WatermarkIT 现已免费，并支持 iOS 18 及更高版本。",
+  "q10": "如何手写自己的签名？",
+  "a10": "在编辑器中切换到签名标签，用手指或 Apple Pencil 直接在照片上书写。可选择任意墨水颜色，并用撤销和重做修正某一笔，无需从头再来。",
+  "q11": "隐形版权是什么？裁剪后真的还在吗？",
+  "a11": "是的。除了可见的水印，WatermarkIT 还能把你的姓名和版权信息写入导出文件的 IPTC 与 TIFF 字段——这是照片软件查找作者信息的标准位置。由于这些数据存放在文件中而非像素里，裁剪图片并不会移除它。写入的始终是你自己的名字，而非我们的，你也可以在设置或导出面板中为任意一次导出关闭它。请注意，部分社交平台在重新编码上传内容时会清除元数据，因此请把它视为对作品归属的有力主张，而非牢不可破的锁。",
+  "contact.h": "仍需帮助？",
+  "contact.p": "没有找到想要的答案？给我们发邮件，我们会尽快回复你。",
+  "footer.privacy": "隐私政策",
+  "footer.made": "为 iOS 用 ❤️ 打造"
+ },
+ "zh-Hant": {
+  "nav.privacy": "隱私權政策",
+  "lang.label": "語言",
+  "trans.note": "本譯文僅供參考，以英文版為準。",
+  "hero.title": "需要什麼協助？",
+  "hero.sub": "尋找常見問題的解答，或直接與我們聯絡。",
+  "quick.title": "快速協助",
+  "c1.h": "加入浮水印",
+  "c1.p": "點一下「選擇照片」——也可從相機或「檔案」匯入——然後在編輯器中加入文字、標誌、簽名或 QR 碼。",
+  "c2.h": "批次模式",
+  "c2.p": "在主畫面點一下「批次匯入」，選取多張照片並對全部套用同一個浮水印。",
+  "c3.h": "儲存範本",
+  "c3.p": "開啟範本，點一下 +，設計你的樣式，接著點一下匯出 →「儲存為範本」，隨時重複使用。",
+  "c4.h": "匯出與分享",
+  "c4.p": "點一下匯出，選擇品質、格式（JPEG／PNG／HEIC）與形狀，然後儲存到相機膠卷或直接分享。",
+  "faq.title": "常見問題",
+  "q1": "我的照片會被上傳到網路嗎？",
+  "a1": "不會。WatermarkIT 百分之百在你的裝置上完成所有處理。你的照片絕不會被上傳、傳送到伺服器或分享給任何人。所有處理都完全在裝置端進行。",
+  "q2": "一次可以為多少張照片加浮水印？",
+  "a2": "在批次模式下可以一次選取多張照片。單張處理時，請使用主畫面的「選擇照片」按鈕，依需要重複即可。",
+  "q3": "可以用我自己的標誌當作浮水印嗎？",
+  "a3": "當然可以！在編輯器中切換到「標誌」標籤頁，點一下「上傳標誌」即可從照片圖庫匯入任何圖片。你可以調整大小、位置與不透明度。具透明背景的 PNG 效果最佳。",
+  "q4": "支援哪些匯出格式？",
+  "a4": "WatermarkIT 支援匯出為 JPEG（相容性最廣）、PNG（無損，保留標誌透明度）與 HEIC（同等品質、檔案更小）。你也可以選擇匯出形狀——1:1、4:5、9:16 或 16:9，並選擇符合或填滿——選擇原始、大型或網頁尺寸，並自行為匯出的檔案命名。",
+  "q5": "可以儲存浮水印樣式供日後使用嗎？",
+  "a5": "完全可以。在編輯器中點一下範本圖像，再點一下 + 開啟新的範本編輯器。設計好樣式並命名儲存後，它會出現在範本畫面的「我的範本」中，隨時快速取用。",
+  "q6": "App 為什麼要求存取照片圖庫？",
+  "a6": "WatermarkIT 需要讀取權限讓你挑選要加浮水印的照片，並需要寫入權限將完成的結果儲存回相機膠卷。我們只會存取你明確選擇的照片，別無其他。",
+  "q7": "如何刪除自訂範本？",
+  "a7": "在範本畫面中，長按「我的範本」內的任一範本卡片，會出現包含刪除選項的選單。請注意：內建範本無法刪除。",
+  "q8": "需要哪個版本的 iOS？",
+  "a8": "WatermarkIT 需要 iOS 18.0 或更新版本，iPhone 與 iPad 皆可使用。1.1 版已將需求從 iOS 26 下調——如果 App Store 先前告訴你裝置不支援，值得再試一次。",
+  "q9": "1.1 版有哪些新功能？",
+  "a9": "1.1 版新增了四種為照片加註的方式：手寫簽名、可掃描的 QR 碼、將標記並排重複於整張圖片，以及寫入檔案中繼資料的隱形版權資訊。此外還帶來 22 種字型（原為 4 種）、陰影與外框、完整的檢色器、360° 旋轉與翻轉、HEIC 匯出、匯出形狀、八組內建預設集、相機與「檔案」匯入，以及主畫面上的最近作品。WatermarkIT 現已免費，並支援 iOS 18 以上版本。",
+  "q10": "如何手寫自己的簽名？",
+  "a10": "在編輯器中切換到簽名標籤頁，用手指或 Apple Pencil 直接在照片上書寫。可選擇任何墨水顏色，並以還原和重做修正某一筆，不必重新開始。",
+  "q11": "隱形版權是什麼？裁切後真的還在嗎？",
+  "a11": "是的。除了可見的浮水印，WatermarkIT 還能將你的姓名與版權資訊寫入匯出檔案的 IPTC 與 TIFF 欄位——這是照片軟體尋找作者資訊的標準位置。由於這些資料存放在檔案中而非像素裡，裁切圖片並不會移除它。寫入的一律是你自己的名字，而非我們的，你也可以在設定或匯出工作表中為任何一次匯出關閉它。請注意，部分社群平台在重新編碼上傳內容時會移除中繼資料，因此請將它視為對作品歸屬的有力主張，而非牢不可破的鎖。",
+  "contact.h": "仍需要協助嗎？",
+  "contact.p": "沒有找到想要的答案嗎？寄電子郵件給我們，我們會盡快回覆你。",
+  "footer.privacy": "隱私權政策",
+  "footer.made": "為 iOS 用 ❤️ 打造"
+ }
+};
+
+  const SUPPORTED = Object.keys(I18N);
+  const RTL = new Set(['ar']);
+
+  function resolveLang() {
+    const q = new URLSearchParams(location.search).get('lang');
+    let stored = null;
+    try { stored = localStorage.getItem('wmk-lang'); } catch (e) {}
+    for (const cand of [q, stored, ...(navigator.languages || [navigator.language || ''])]) {
+      if (!cand) continue;
+      if (I18N[cand]) return cand;
+      const low = cand.toLowerCase();
+      if (low.startsWith('zh')) {
+        return /hant|tw|hk|mo/.test(low) ? 'zh-Hant' : 'zh-Hans';
+      }
+      const base = low.split('-')[0];
+      const hit = SUPPORTED.find(l => l.toLowerCase().split('-')[0] === base);
+      if (hit) return hit;
+    }
+    return 'en';
+  }
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dir = RTL.has(lang) ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = dict[el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;   // authored strings, not user input
+    });
+
+    document.title = 'WatermarkIT \u2014 ' + (dict['hero.title'] || '');
+    const pick = document.getElementById('langpick');
+    if (pick) { pick.value = lang; pick.setAttribute('aria-label', dict['lang.label'] || 'Language'); }
+
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || !/^(index|support|privacy)\.html/.test(href)) return;
+      const u = new URL(href, location.href);
+      u.searchParams.set('lang', lang);
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search);
+    });
+
+    try { localStorage.setItem('wmk-lang', lang); } catch (e) {}
+  }
+
+  applyLang(resolveLang());
+
+  document.getElementById('langpick').addEventListener('change', e => {
+    applyLang(e.target.value);
+    const u = new URL(location.href);
+    u.searchParams.set('lang', e.target.value);
+    history.replaceState(null, '', u);
+  });
+
+  document.getElementById('yr-support').textContent = new Date().getFullYear();
+</script>
 </body>
 
 </html>

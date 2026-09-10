@@ -174,7 +174,7 @@
       flex-shrink: 0;
     }
     .policy-section p {
-      color: #B0B0CC;
+      color: #B4B4BC;
       font-size: 15px;
       margin-bottom: 14px;
     }
@@ -183,7 +183,7 @@
       padding: 0;
     }
     .policy-section ul li {
-      color: #B0B0CC;
+      color: #B4B4BC;
       font-size: 15px;
       padding: 6px 0 6px 24px;
       position: relative;
@@ -249,6 +249,38 @@
     }
     footer a { color: var(--green-light); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+
+    /* ── i18n ───────────────────────────────────── */
+    .langpick {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 12px;
+      cursor: pointer;
+appearance: none;
+    }
+    .langpick:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; }
+    .trans-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      border-inline-start: 2px solid var(--border);
+      padding-inline-start: 12px;
+      margin-bottom: 28px;
+    }
+    .trans-note:empty { display: none; }
+    /* Mirror the few rules that are physically, not logically, sided. */
+    [dir="rtl"] .policy-section ul li { padding: 6px 24px 6px 0; }
+    [dir="rtl"] .policy-section ul li::before { left: auto; right: 0; content: '←'; }
+    [dir="rtl"] .faq-question { text-align: right; }
+    :lang(ar) body { font-family: 'Inter', 'Geeza Pro', system-ui, sans-serif; }
+    :lang(ja) body { font-family: 'Inter', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; }
+    :lang(zh-Hans) body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+    :lang(zh-Hant) body { font-family: 'Inter', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif; }
   </style>
 </head>
 <body>
@@ -259,125 +291,123 @@
         <img src="appicon.png" class="logo-icon" alt="WatermarkIT App Icon">
         WatermarkIT
       </a>
-      <a href="support.html" class="nav-link">Support</a>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="support.html" class="nav-link" data-i18n="nav.support"></a>
+        <select class="langpick" id="langpick">
+          <option value="en">English</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="ar">العربية</option>
+          <option value="ja">日本語</option>
+        </select>
+      </div>
     </div>
   </nav>
 
   <div class="hero">
-    <h1>Privacy Policy</h1>
-    <p class="meta">Effective Date: June 1, 2026 &nbsp;·&nbsp; Last Updated: September 1, 2026</p>
+    <h1 data-i18n="hero.title"></h1>
+    <p class="meta" data-i18n="hero.meta"></p>
   </div>
 
   <div class="content">
 
-    <!-- Summary Strip -->
+    <p class="trans-note" data-i18n="trans.note"></p>
+
     <div class="summary-strip">
-      <div class="summary-item"><span class="check">✓</span> On-device processing</div>
-      <div class="summary-item"><span class="check">✓</span> Privacy-focused</div>
-      <div class="summary-item"><span class="check">✓</span> No cloud uploads</div>
-      <div class="summary-item"><span class="check">✓</span> Secure local storage</div>
+      <div class="summary-item"><span class="check">✓</span> <span data-i18n="sum.1"></span></div>
+      <div class="summary-item"><span class="check">✓</span> <span data-i18n="sum.2"></span></div>
+      <div class="summary-item"><span class="check">✓</span> <span data-i18n="sum.3"></span></div>
+      <div class="summary-item"><span class="check">✓</span> <span data-i18n="sum.4"></span></div>
     </div>
 
-    <!-- Section 1 -->
-    <div class="policy-section">
-      <h2><span class="num">1</span> Overview</h2>
-      <p class="highlight">WatermarkIT does not collect, store, transmit, or share any personal data or images. All processing happens entirely on your device.</p>
-      <p>This Privacy Policy explains how the WatermarkIT iOS application ("the App", "we", "us") handles your information. We are committed to protecting your privacy and being transparent about our practices.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">1</span> <span data-i18n="s1.h"></span></h2>
+        <p class="highlight" data-i18n="s1.p1"></p>
+        <p data-i18n="s1.p2"></p>
+      </div>
 
-    <!-- Section 2 -->
-    <div class="policy-section">
-      <h2><span class="num">2</span> Data Collection and Usage</h2>
-      <p><strong>Our Absolute Commitment:</strong> We never access, upload, transmit, or store your photos under any circumstances. All image processing is performed entirely locally on your device.</p>
-      <p>At present, the App does not collect personal identification information (such as your name or email address). If we introduce features like user accounts, subscriptions, or basic usage analytics/diagnostic reporting in the future, your photos will still remain 100% private and will never be accessed, uploaded, or stored by us.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">2</span> <span data-i18n="s2.h"></span></h2>
+        <p data-i18n="s2.p1"></p>
+        <p data-i18n="s2.p2"></p>
+      </div>
 
-    <!-- Section 3 -->
-    <div class="policy-section">
-      <h2><span class="num">3</span> How the App Works</h2>
-      <p>WatermarkIT is a fully offline, on-device application. Here is exactly what happens when you use it:</p>
-      <ul>
-        <li>You choose a photo — from your photo library, from your camera, or from the Files app</li>
-        <li>The App reads that photo locally on your device</li>
-        <li>All watermark processing — text, logos, hand-drawn signatures, QR codes and tiling — is performed entirely on your device</li>
-        <li>QR codes are generated on-device with Apple's built-in Core Image framework; the link you enter is never transmitted</li>
-        <li>The result is saved back to your local Camera Roll or shared via the iOS Share Sheet</li>
-        <li>At no point is your photo, or any data derived from it, sent to any external server</li>
-      </ul>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">3</span> <span data-i18n="s3.h"></span></h2>
+        <p data-i18n="s3.p1"></p>
+        <ul>
+          <li data-i18n="s3.li1"></li>
+          <li data-i18n="s3.li2"></li>
+          <li data-i18n="s3.li3"></li>
+          <li data-i18n="s3.li4"></li>
+          <li data-i18n="s3.li5"></li>
+          <li data-i18n="s3.li6"></li>
+        </ul>
+      </div>
 
-    <!-- Section 4 -->
-    <div class="policy-section">
-      <h2><span class="num">4</span> Device Permissions</h2>
-      <p>The App requests the following iOS permissions:</p>
-      <ul>
-        <li><strong style="color: var(--text);">Photo Library Read Access</strong> — to allow you to select photos you want to watermark. We only access photos you explicitly choose.</li>
-        <li><strong style="color: var(--text);">Photo Library Write Access</strong> — to save your watermarked images back to your Camera Roll.</li>
-        <li><strong style="color: var(--text);">Camera Access</strong> — only if you choose to take a new photo inside the App, so you can watermark a shot without first saving an unmarked copy. The App never opens the camera on its own, and photos you capture are handled exactly like any other: processed on-device, never uploaded.</li>
-      </ul>
-      <p>You may also import an image through the Files app. That uses the standard iOS document picker, which hands the App only the single file you pick and requires no ongoing permission.</p>
-      <p>These permissions are only requested at the moment you attempt to use the relevant feature — never automatically on launch. You can revoke them at any time in iOS Settings → Privacy & Security.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">4</span> <span data-i18n="s4.h"></span></h2>
+        <p data-i18n="s4.p1"></p>
+        <ul>
+          <li data-i18n="s4.li1"></li>
+          <li data-i18n="s4.li2"></li>
+          <li data-i18n="s4.li3"></li>
+        </ul>
+        <p data-i18n="s4.p2"></p>
+        <p data-i18n="s4.p3"></p>
+      </div>
 
-    <!-- Section 5 -->
-    <div class="policy-section">
-      <h2><span class="num">5</span> Information You Add to Your Photos</h2>
-      <p>WatermarkIT can write a credit line — your name and copyright — into the metadata of the photos you export, using the standard IPTC and TIFF fields (Byline, Copyright Notice, Artist). This is what allows your credit to survive cropping.</p>
-      <p>Two things are worth being clear about:</p>
-      <ul>
-        <li>The text written is <strong style="color: var(--text);">the text you enter</strong>. WatermarkIT never inserts our name, a device identifier, your location, or any hidden tracking data of its own.</li>
-        <li>This metadata is written into the exported file, so it <strong style="color: var(--text);">travels with that file wherever you send it</strong>. That is precisely the point of the feature — but it does mean anyone you share the photo with can read the name you put there.</li>
-      </ul>
-      <p>The credit is optional. You can turn it off for an individual export on the Export sheet, or switch it off by default in Settings. Your existing photos are never modified — every export is written as a new file.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">5</span> <span data-i18n="s5.h"></span></h2>
+        <p data-i18n="s5.p1"></p>
+        <p data-i18n="s5.p2"></p>
+        <ul>
+          <li data-i18n="s5.li1"></li>
+          <li data-i18n="s5.li2"></li>
+        </ul>
+        <p data-i18n="s5.p3"></p>
+      </div>
 
-    <!-- Section 5 -->
-    <div class="policy-section">
-      <h2><span class="num">6</span> Local Data Storage</h2>
-      <p>The App stores the following data <strong style="color: var(--text);">only on your device</strong>:</p>
-      <ul>
-        <li>Watermark templates and presets you create (name, typeface, size, colour, opacity, rotation, tiling and position)</li>
-        <li>Thumbnail preview images for your saved templates</li>
-        <li>Your Recent Work — a local history of photos you have exported, so you can reopen or re-export them</li>
-        <li>Your app preferences, such as default export quality, format and whether to include your credit line</li>
-      </ul>
-      <p>This data never leaves your device. It is stored in the App's local container and is deleted automatically if you uninstall the App.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">6</span> <span data-i18n="s6.h"></span></h2>
+        <p data-i18n="s6.p1"></p>
+        <ul>
+          <li data-i18n="s6.li1"></li>
+          <li data-i18n="s6.li2"></li>
+          <li data-i18n="s6.li3"></li>
+          <li data-i18n="s6.li4"></li>
+        </ul>
+        <p data-i18n="s6.p2"></p>
+      </div>
 
-    <!-- Section 6 -->
-    <div class="policy-section">
-      <h2><span class="num">7</span> Third-Party Services</h2>
-      <p>The App does not share your data with third-party advertising networks. We may use verified third-party SDKs or service providers for app analytics, crash reporting, or subscription management. Any such services are integrated strictly to support the app's functionality and improve user experience.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">7</span> <span data-i18n="s7.h"></span></h2>
+        <p data-i18n="s7.p1"></p>
+      </div>
 
-    <!-- Section 7 -->
-    <div class="policy-section">
-      <h2><span class="num">8</span> Children's Privacy</h2>
-      <p>WatermarkIT is designed for a general audience. We do not knowingly collect personal information from children under the age of 13. If you believe we have inadvertently collected such information, please contact us so we can promptly address it.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">8</span> <span data-i18n="s8.h"></span></h2>
+        <p data-i18n="s8.p1"></p>
+      </div>
 
-    <!-- Section 8 -->
-    <div class="policy-section">
-      <h2><span class="num">9</span> Data Security</h2>
-      <p>Because WatermarkIT does not transmit any data, there is no data in transit to secure. All data stored locally (your templates) is subject to iOS's built-in device encryption, which is enabled whenever you use a device passcode.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">9</span> <span data-i18n="s9.h"></span></h2>
+        <p data-i18n="s9.p1"></p>
+      </div>
 
-    <!-- Section 9 -->
-    <div class="policy-section">
-      <h2><span class="num">10</span> Changes to This Policy</h2>
-      <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically for any changes.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">10</span> <span data-i18n="s10.h"></span></h2>
+        <p data-i18n="s10.p1"></p>
+      </div>
 
-    <!-- Section 10 -->
-    <div class="policy-section">
-      <h2><span class="num">11</span> Your Rights</h2>
-      <p>Depending on your location, you may have rights regarding your data under local regulations (such as GDPR or CCPA). Since the majority of your data (like templates and photos) is stored locally, you can manage it directly by modifying or deleting items inside the App, or by uninstalling the App.</p>
-    </div>
+      <div class="policy-section">
+        <h2><span class="num">11</span> <span data-i18n="s11.h"></span></h2>
+        <p data-i18n="s11.p1"></p>
+      </div>
 
-    <!-- Contact -->
     <div class="contact-box">
-      <h2>Questions about your privacy?</h2>
-      <p>If you have any questions or concerns about this Privacy Policy, reach out — we're happy to help.</p>
+      <h2 data-i18n="contact.h"></h2>
+      <p data-i18n="contact.p"></p>
       <a href="mailto:tnisar157@gmail.com" class="btn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         tnisar157@gmail.com
@@ -387,10 +417,370 @@
   </div>
 
   <footer>
-    <p>© <span id="yr-privacy"></span> WatermarkIT · <a href="support.html">Support</a> · Made with ❤️ for iOS</p>
+    <p>© <span id="yr-privacy"></span> WatermarkIT · <a href="support.html" data-i18n="footer.support"></a> · <span data-i18n="footer.made"></span></p>
   </footer>
 
 <script>
+  // Translations. English is the source text and stays authoritative.
+  const I18N = {
+ "en": {
+  "nav.support": "Support",
+  "lang.label": "Language",
+  "hero.title": "Privacy Policy",
+  "hero.meta": "Effective Date: June 1, 2026 &nbsp;·&nbsp; Last Updated: September 1, 2026",
+  "trans.note": "",
+  "sum.1": "On-device processing",
+  "sum.2": "Privacy-focused",
+  "sum.3": "No cloud uploads",
+  "sum.4": "Secure local storage",
+  "s1.h": "Overview",
+  "s1.p1": "WatermarkIT does not collect, store, transmit, or share any personal data or images. All processing happens entirely on your device.",
+  "s1.p2": "This Privacy Policy explains how the WatermarkIT iOS application (“the App”, “we”, “us”) handles your information. We are committed to protecting your privacy and being transparent about our practices.",
+  "s2.h": "Data Collection and Usage",
+  "s2.p1": "<strong>Our Absolute Commitment:</strong> We never access, upload, transmit, or store your photos under any circumstances. All image processing is performed entirely locally on your device.",
+  "s2.p2": "At present, the App does not collect personal identification information (such as your name or email address). If we introduce features like user accounts, subscriptions, or basic usage analytics/diagnostic reporting in the future, your photos will still remain 100% private and will never be accessed, uploaded, or stored by us.",
+  "s3.h": "How the App Works",
+  "s3.p1": "WatermarkIT is a fully offline, on-device application. Here is exactly what happens when you use it:",
+  "s3.li1": "You choose a photo — from your photo library, from your camera, or from the Files app",
+  "s3.li2": "The App reads that photo locally on your device",
+  "s3.li3": "All watermark processing — text, logos, hand-drawn signatures, QR codes and tiling — is performed entirely on your device",
+  "s3.li4": "QR codes are generated on-device with Apple’s built-in Core Image framework; the link you enter is never transmitted",
+  "s3.li5": "The result is saved back to your local Camera Roll or shared via the iOS Share Sheet",
+  "s3.li6": "At no point is your photo, or any data derived from it, sent to any external server",
+  "s4.h": "Device Permissions",
+  "s4.p1": "The App requests the following iOS permissions:",
+  "s4.li1": "<strong>Photo Library Read Access</strong> — to allow you to select photos you want to watermark. We only access photos you explicitly choose.",
+  "s4.li2": "<strong>Photo Library Write Access</strong> — to save your watermarked images back to your Camera Roll.",
+  "s4.li3": "<strong>Camera Access</strong> — only if you choose to take a new photo inside the App, so you can watermark a shot without first saving an unmarked copy. The App never opens the camera on its own, and photos you capture are handled exactly like any other: processed on-device, never uploaded.",
+  "s4.p2": "You may also import an image through the Files app. That uses the standard iOS document picker, which hands the App only the single file you pick and requires no ongoing permission.",
+  "s4.p3": "These permissions are only requested at the moment you attempt to use the relevant feature — never automatically on launch. You can revoke them at any time in iOS Settings → Privacy &amp; Security.",
+  "s5.h": "Information You Add to Your Photos",
+  "s5.p1": "WatermarkIT can write a credit line — your name and copyright — into the metadata of the photos you export, using the standard IPTC and TIFF fields (Byline, Copyright Notice, Artist). This is what allows your credit to survive cropping.",
+  "s5.p2": "Two things are worth being clear about:",
+  "s5.li1": "The text written is <strong>the text you enter</strong>. WatermarkIT never inserts our name, a device identifier, your location, or any hidden tracking data of its own.",
+  "s5.li2": "This metadata is written into the exported file, so it <strong>travels with that file wherever you send it</strong>. That is precisely the point of the feature — but it does mean anyone you share the photo with can read the name you put there.",
+  "s5.p3": "The credit is optional. You can turn it off for an individual export on the Export sheet, or switch it off by default in Settings. Your existing photos are never modified — every export is written as a new file.",
+  "s6.h": "Local Data Storage",
+  "s6.p1": "The App stores the following data <strong>only on your device</strong>:",
+  "s6.li1": "Watermark templates and presets you create (name, typeface, size, colour, opacity, rotation, tiling and position)",
+  "s6.li2": "Thumbnail preview images for your saved templates",
+  "s6.li3": "Your Recent Work — a local history of photos you have exported, so you can reopen or re-export them",
+  "s6.li4": "Your app preferences, such as default export quality, format and whether to include your credit line",
+  "s6.p2": "This data never leaves your device. It is stored in the App’s local container and is deleted automatically if you uninstall the App.",
+  "s7.h": "Third-Party Services",
+  "s7.p1": "The App does not share your data with third-party advertising networks. We may use verified third-party SDKs or service providers for app analytics, crash reporting, or subscription management. Any such services are integrated strictly to support the app’s functionality and improve user experience.",
+  "s8.h": "Children’s Privacy",
+  "s8.p1": "WatermarkIT is designed for a general audience. We do not knowingly collect personal information from children under the age of 13. If you believe we have inadvertently collected such information, please contact us so we can promptly address it.",
+  "s9.h": "Data Security",
+  "s9.p1": "Because WatermarkIT does not transmit any data, there is no data in transit to secure. All data stored locally (your templates) is subject to iOS’s built-in device encryption, which is enabled whenever you use a device passcode.",
+  "s10.h": "Changes to This Policy",
+  "s10.p1": "We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated “Last Updated” date. We encourage you to review this policy periodically for any changes.",
+  "s11.h": "Your Rights",
+  "s11.p1": "Depending on your location, you may have rights regarding your data under local regulations (such as GDPR or CCPA). Since the majority of your data (like templates and photos) is stored locally, you can manage it directly by modifying or deleting items inside the App, or by uninstalling the App.",
+  "contact.h": "Questions about your privacy?",
+  "contact.p": "If you have any questions or concerns about this Privacy Policy, reach out — we’re happy to help.",
+  "footer.support": "Support",
+  "footer.made": "Made with ❤️ for iOS"
+ },
+ "ar": {
+  "nav.support": "الدعم",
+  "lang.label": "اللغة",
+  "hero.title": "سياسة الخصوصية",
+  "hero.meta": "تاريخ السريان: 1 يونيو 2026 &nbsp;·&nbsp; آخر تحديث: 1 سبتمبر 2026",
+  "trans.note": "هذه الترجمة مقدّمة للتسهيل فقط، والنسخة الإنجليزية هي المرجع المعتمد.",
+  "sum.1": "معالجة على الجهاز",
+  "sum.2": "تركّز على الخصوصية",
+  "sum.3": "لا رفع إلى السحابة",
+  "sum.4": "تخزين محلي آمن",
+  "s1.h": "نظرة عامة",
+  "s1.p1": "لا يجمع WatermarkIT أي بيانات شخصية أو صور ولا يخزّنها أو ينقلها أو يشاركها. تتم كل المعالجة على جهازك بالكامل.",
+  "s1.p2": "توضّح سياسة الخصوصية هذه كيف يتعامل تطبيق WatermarkIT لـ iOS (“التطبيق”، “نحن”) مع معلوماتك. نحن ملتزمون بحماية خصوصيتك وبالشفافية في ممارساتنا.",
+  "s2.h": "جمع البيانات واستخدامها",
+  "s2.p1": "<strong>التزامنا المطلق:</strong> لا نصل إلى صورك ولا نرفعها أو ننقلها أو نخزّنها تحت أي ظرف. تتم معالجة الصور محليًا على جهازك بالكامل.",
+  "s2.p2": "لا يجمع التطبيق حاليًا معلومات تعريف شخصية (مثل اسمك أو بريدك الإلكتروني). وإذا أضفنا مستقبلًا ميزات مثل الحسابات أو الاشتراكات أو تقارير الاستخدام والأعطال، فستبقى صورك خاصة بالكامل ولن يتم الوصول إليها أو رفعها أو تخزينها من قبلنا.",
+  "s3.h": "كيف يعمل التطبيق",
+  "s3.p1": "WatermarkIT تطبيق يعمل دون اتصال وعلى الجهاز بالكامل. إليك ما يحدث بالضبط عند استخدامه:",
+  "s3.li1": "تختار صورة — من مكتبة الصور أو الكاميرا أو تطبيق الملفات",
+  "s3.li2": "يقرأ التطبيق تلك الصورة محليًا على جهازك",
+  "s3.li3": "تتم كل معالجة العلامة المائية — النص والشعارات والتوقيعات اليدوية ورموز QR والتكرار — على جهازك بالكامل",
+  "s3.li4": "تُنشأ رموز QR على الجهاز باستخدام إطار Core Image من أبل، ولا يُرسل الرابط الذي تدخله أبدًا",
+  "s3.li5": "تُحفظ النتيجة في ألبوم الصور لديك أو تُشارك عبر ورقة المشاركة في iOS",
+  "s3.li6": "لا تُرسل صورتك، أو أي بيانات مستمدة منها، إلى أي خادم خارجي في أي وقت",
+  "s4.h": "أذونات الجهاز",
+  "s4.p1": "يطلب التطبيق أذونات iOS التالية:",
+  "s4.li1": "<strong>إذن قراءة مكتبة الصور</strong> — لتتمكّن من اختيار الصور التي تريد وضع علامة عليها. لا نصل إلا إلى الصور التي تختارها صراحة.",
+  "s4.li2": "<strong>إذن الكتابة إلى مكتبة الصور</strong> — لحفظ الصور بعد وضع العلامة في ألبوم الصور.",
+  "s4.li3": "<strong>إذن الكاميرا</strong> — فقط إذا اخترت التقاط صورة جديدة داخل التطبيق، لتضع علامة على لقطة دون حفظ نسخة غير معلّمة أولًا. لا يفتح التطبيق الكاميرا من تلقاء نفسه، وتُعامَل الصور التي تلتقطها مثل غيرها تمامًا: تُعالَج على الجهاز ولا تُرفع أبدًا.",
+  "s4.p2": "يمكنك أيضًا استيراد صورة عبر تطبيق الملفات، وذلك عبر منتقي المستندات القياسي في iOS الذي يمنح التطبيق الملف المحدد فقط دون أي إذن دائم.",
+  "s4.p3": "لا تُطلب هذه الأذونات إلا عند محاولة استخدام الميزة ذات الصلة — وليس تلقائيًا عند التشغيل. ويمكنك سحبها في أي وقت من إعدادات iOS ← الخصوصية والأمان.",
+  "s5.h": "المعلومات التي تضيفها إلى صورك",
+  "s5.p1": "يمكن لـ WatermarkIT كتابة سطر نسبة — اسمك وحقوق النشر — في بيانات الصور التي تصدّرها، باستخدام حقول IPTC وTIFF القياسية. وهذا ما يجعل نسبتك تبقى بعد الاقتصاص.",
+  "s5.p2": "ينبغي توضيح أمرين:",
+  "s5.li1": "النص المكتوب هو <strong>النص الذي تدخله أنت</strong>. لا يضيف WatermarkIT اسمنا أو معرّف جهاز أو موقعك أو أي بيانات تتبّع خفية.",
+  "s5.li2": "تُكتب هذه البيانات داخل الملف المُصدَّر، لذا <strong>تنتقل معه أينما أرسلته</strong>. وهذا هو الهدف من الميزة — لكنه يعني أيضًا أن كل من تشاركه الصورة يمكنه قراءة الاسم الذي وضعته.",
+  "s5.p3": "سطر النسبة اختياري. يمكنك إيقافه لعملية تصدير واحدة من ورقة التصدير، أو تعطيله افتراضيًا من الإعدادات. ولا تُعدّل صورك الحالية أبدًا — فكل تصدير يُكتب كملف جديد.",
+  "s6.h": "التخزين المحلي للبيانات",
+  "s6.p1": "يخزّن التطبيق البيانات التالية <strong>على جهازك فقط</strong>:",
+  "s6.li1": "القوالب والإعدادات المسبقة التي تنشئها (الاسم والخط والحجم واللون والشفافية والدوران والتكرار والموضع)",
+  "s6.li2": "صور المعاينة المصغّرة لقوالبك المحفوظة",
+  "s6.li3": "أعمالك الأخيرة — سجل محلي للصور التي صدّرتها، لتتمكّن من فتحها أو تصديرها مجددًا",
+  "s6.li4": "تفضيلات التطبيق، مثل جودة التصدير الافتراضية والصيغة وما إذا كنت تريد تضمين سطر النسبة",
+  "s6.p2": "لا تغادر هذه البيانات جهازك أبدًا. فهي مخزّنة في حاوية التطبيق المحلية وتُحذف تلقائيًا عند إلغاء تثبيت التطبيق.",
+  "s7.h": "خدمات الطرف الثالث",
+  "s7.p1": "لا يشارك التطبيق بياناتك مع شبكات الإعلانات. وقد نستخدم حزم SDK أو مزوّدي خدمات موثوقين لتحليلات التطبيق أو تقارير الأعطال أو إدارة الاشتراكات، وذلك حصرًا لدعم وظائف التطبيق وتحسين التجربة.",
+  "s8.h": "خصوصية الأطفال",
+  "s8.p1": "صُمّم WatermarkIT لجمهور عام. ولا نجمع عن علم معلومات شخصية من الأطفال دون الثالثة عشرة. إذا كنت تعتقد أننا جمعنا مثل هذه المعلومات عن غير قصد، فيرجى التواصل معنا لمعالجة الأمر سريعًا.",
+  "s9.h": "أمان البيانات",
+  "s9.p1": "لأن WatermarkIT لا ينقل أي بيانات، فلا توجد بيانات أثناء النقل تحتاج إلى حماية. وجميع البيانات المخزّنة محليًا خاضعة لتشفير iOS المدمج، الذي يعمل عند استخدام رمز دخول للجهاز.",
+  "s10.h": "التغييرات على هذه السياسة",
+  "s10.p1": "قد نحدّث سياسة الخصوصية من وقت لآخر. وستُنشر أي تغييرات على هذه الصفحة مع تحديث تاريخ “آخر تحديث”. نشجّعك على مراجعة هذه السياسة دوريًا.",
+  "s11.h": "حقوقك",
+  "s11.p1": "تبعًا لموقعك، قد تتمتع بحقوق تتعلق ببياناتك بموجب الأنظمة المحلية (مثل GDPR أو CCPA). وبما أن معظم بياناتك مخزّنة محليًا، يمكنك إدارتها مباشرة بتعديل العناصر أو حذفها داخل التطبيق، أو بإلغاء تثبيته.",
+  "contact.h": "لديك أسئلة عن خصوصيتك؟",
+  "contact.p": "إذا كانت لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، تواصل معنا — يسعدنا مساعدتك.",
+  "footer.support": "الدعم",
+  "footer.made": "صُنع بـ ❤️ لـ iOS"
+ },
+ "ja": {
+  "nav.support": "サポート",
+  "lang.label": "言語",
+  "hero.title": "プライバシーポリシー",
+  "hero.meta": "発効日: 2026年6月1日 &nbsp;·&nbsp; 最終更新: 2026年9月1日",
+  "trans.note": "この翻訳は便宜上のものであり、正文は英語版です。",
+  "sum.1": "デバイス内で処理",
+  "sum.2": "プライバシー重視",
+  "sum.3": "クラウドへの送信なし",
+  "sum.4": "安全なローカル保存",
+  "s1.h": "概要",
+  "s1.p1": "WatermarkIT は個人データや画像を一切収集・保存・送信・共有しません。すべての処理はお使いのデバイス内で完結します。",
+  "s1.p2": "本プライバシーポリシーは、iOS アプリ WatermarkIT（以下「本アプリ」）がお客様の情報をどのように扱うかを説明するものです。当方はお客様のプライバシーを保護し、その取り扱いについて透明であることをお約束します。",
+  "s2.h": "データの収集と利用",
+  "s2.p1": "<strong>当方の確約:</strong> いかなる場合も、お客様の写真にアクセスしたり、アップロード・送信・保存したりすることはありません。画像処理はすべてデバイス内でローカルに行われます。",
+  "s2.p2": "現在、本アプリは氏名やメールアドレスなどの個人識別情報を収集しません。将来的にアカウント、サブスクリプション、利用状況の分析やクラッシュレポートなどの機能を導入する場合でも、お客様の写真は 100% 非公開のままであり、当方がアクセス・アップロード・保存することはありません。",
+  "s3.h": "本アプリの仕組み",
+  "s3.p1": "WatermarkIT は完全にオフラインで動作する、デバイス内完結型のアプリです。ご利用時に起きることは次のとおりです。",
+  "s3.li1": "写真ライブラリ、カメラ、または「ファイル」App から写真を選びます",
+  "s3.li2": "本アプリはその写真をデバイス内でローカルに読み込みます",
+  "s3.li3": "テキスト、ロゴ、手書き署名、QR コード、タイル表示を含むすべての透かし処理は、デバイス内で行われます",
+  "s3.li4": "QR コードは Apple 標準の Core Image フレームワークを使ってデバイス内で生成され、入力されたリンクが送信されることはありません",
+  "s3.li5": "結果はカメラロールに保存されるか、iOS の共有シートで共有されます",
+  "s3.li6": "お客様の写真、およびそこから派生したデータが外部サーバーに送信されることは一切ありません",
+  "s4.h": "デバイスの許可",
+  "s4.p1": "本アプリは次の iOS の許可を求めます。",
+  "s4.li1": "<strong>写真ライブラリの読み取り</strong> — 透かしを入れる写真を選べるようにするためです。お客様が明示的に選んだ写真のみにアクセスします。",
+  "s4.li2": "<strong>写真ライブラリへの書き込み</strong> — 透かしを入れた画像をカメラロールに保存するためです。",
+  "s4.li3": "<strong>カメラ</strong> — アプリ内で新しく写真を撮る場合にのみ使用します。透かしのない元画像を保存せずにそのまま加工できます。本アプリが自動でカメラを起動することはなく、撮影した写真も他と同様にデバイス内で処理され、アップロードされることはありません。",
+  "s4.p2": "「ファイル」App から画像を読み込むこともできます。これは iOS 標準のドキュメントピッカーを使うもので、選択した 1 つのファイルだけが本アプリに渡され、継続的な許可は必要ありません。",
+  "s4.p3": "これらの許可は該当する機能を使おうとした時点で初めて求められ、起動時に自動で求めることはありません。iOS の「設定」→「プライバシーとセキュリティ」からいつでも取り消せます。",
+  "s5.h": "写真に追加される情報",
+  "s5.p1": "WatermarkIT は、書き出す写真のメタデータに、お名前と著作権表示（クレジット）を標準の IPTC および TIFF フィールドを使って書き込むことができます。これにより、トリミングされてもクレジットが残ります。",
+  "s5.p2": "次の 2 点を明確にしておきます。",
+  "s5.li1": "書き込まれるのは <strong>お客様が入力したテキスト</strong> です。WatermarkIT が当方の名前、デバイス識別子、位置情報、その他の隠れた追跡データを挿入することはありません。",
+  "s5.li2": "このメタデータは書き出したファイル自体に書き込まれるため、<strong>そのファイルを送った先へも一緒に付いていきます</strong>。それがこの機能の目的ですが、写真を共有した相手はそこに書かれた名前を読めるということでもあります。",
+  "s5.p3": "クレジットは任意です。書き出し画面で 1 回ごとにオフにすることも、設定で既定をオフにすることもできます。既存の写真が変更されることはなく、書き出しは常に新しいファイルとして保存されます。",
+  "s6.h": "ローカルへのデータ保存",
+  "s6.p1": "本アプリは次のデータを <strong>お使いのデバイス内にのみ</strong> 保存します。",
+  "s6.li1": "作成した透かしのテンプレートとプリセット（名前、書体、サイズ、色、不透明度、回転、タイル表示、位置）",
+  "s6.li2": "保存したテンプレートのサムネイル画像",
+  "s6.li3": "最近の作業 — 書き出した写真のローカル履歴。開き直したり、書き出し直したりできます",
+  "s6.li4": "既定の書き出し品質、フォーマット、クレジットを含めるかどうかなどの設定",
+  "s6.p2": "これらのデータがデバイスから出ることはありません。本アプリのローカルコンテナに保存され、アプリを削除すると自動的に消去されます。",
+  "s7.h": "第三者のサービス",
+  "s7.p1": "本アプリはお客様のデータを広告ネットワークと共有しません。アプリの分析、クラッシュレポート、サブスクリプション管理のために、信頼できる第三者の SDK やサービスを利用する場合がありますが、いずれもアプリの機能を支え、体験を改善する目的に限られます。",
+  "s8.h": "お子様のプライバシー",
+  "s8.p1": "WatermarkIT は一般の利用者を対象としています。13 歳未満のお子様から意図的に個人情報を収集することはありません。万一そうした情報を収集してしまったと思われる場合は、速やかに対応しますのでご連絡ください。",
+  "s9.h": "データの安全性",
+  "s9.p1": "WatermarkIT はデータを送信しないため、保護すべき通信中のデータが存在しません。ローカルに保存されるデータは、デバイスにパスコードを設定していれば有効になる iOS 標準の暗号化によって保護されます。",
+  "s10.h": "本ポリシーの変更",
+  "s10.p1": "本プライバシーポリシーは随時更新されることがあります。変更があった場合は、「最終更新」日を更新のうえ本ページに掲載します。定期的にご確認いただくことをおすすめします。",
+  "s11.h": "お客様の権利",
+  "s11.p1": "お住まいの地域によっては、現地の規制（GDPR や CCPA など）に基づきご自身のデータに関する権利が認められる場合があります。データの大半はローカルに保存されているため、アプリ内で項目を編集・削除するか、アプリを削除することで直接管理できます。",
+  "contact.h": "プライバシーについてご質問がありますか？",
+  "contact.p": "本プライバシーポリシーについてご不明な点やご懸念があれば、お気軽にご連絡ください。",
+  "footer.support": "サポート",
+  "footer.made": "iOS のために ❤️ を込めて"
+ },
+ "zh-Hans": {
+  "nav.support": "支持",
+  "lang.label": "语言",
+  "hero.title": "隐私政策",
+  "hero.meta": "生效日期：2026 年 6 月 1 日 &nbsp;·&nbsp; 最后更新：2026 年 9 月 1 日",
+  "trans.note": "本译文仅供参考，以英文版为准。",
+  "sum.1": "设备端处理",
+  "sum.2": "注重隐私",
+  "sum.3": "不上传云端",
+  "sum.4": "安全的本地存储",
+  "s1.h": "概述",
+  "s1.p1": "WatermarkIT 不会收集、存储、传输或共享任何个人数据或图片。所有处理均完全在您的设备上完成。",
+  "s1.p2": "本隐私政策说明 WatermarkIT iOS 应用（下称“本应用”“我们”）如何处理您的信息。我们承诺保护您的隐私，并对我们的做法保持透明。",
+  "s2.h": "数据的收集与使用",
+  "s2.p1": "<strong>我们的绝对承诺：</strong>在任何情况下，我们都不会访问、上传、传输或存储您的照片。所有图像处理均完全在您的设备本地进行。",
+  "s2.p2": "目前，本应用不收集个人身份信息（如姓名或电子邮件地址）。即使我们将来推出账户、订阅或基础的使用分析／崩溃报告等功能，您的照片仍将 100% 保持私密，我们绝不会访问、上传或存储它们。",
+  "s3.h": "本应用的工作方式",
+  "s3.p1": "WatermarkIT 是一款完全离线、在设备上运行的应用。使用时的具体流程如下：",
+  "s3.li1": "您从照片图库、相机或“文件”App 中选择一张照片",
+  "s3.li2": "本应用在您的设备本地读取该照片",
+  "s3.li3": "所有水印处理——文字、徽标、手写签名、二维码与平铺——均完全在您的设备上完成",
+  "s3.li4": "二维码使用 Apple 内置的 Core Image 框架在设备端生成，您输入的链接绝不会被传输",
+  "s3.li5": "结果保存回您的本地相册，或通过 iOS 共享面板分享",
+  "s3.li6": "您的照片及由其衍生的任何数据，在任何环节都不会被发送到外部服务器",
+  "s4.h": "设备权限",
+  "s4.p1": "本应用会请求以下 iOS 权限：",
+  "s4.li1": "<strong>照片图库读取权限</strong>——以便您选择要添加水印的照片。我们只访问您明确选择的照片。",
+  "s4.li2": "<strong>照片图库写入权限</strong>——以便将添加水印后的图片保存回您的相册。",
+  "s4.li3": "<strong>相机权限</strong>——仅当您选择在应用内拍摄新照片时使用，让您无需先保存无水印的原图即可直接加水印。本应用绝不会自行开启相机，您拍摄的照片与其他照片一样：在设备端处理，绝不上传。",
+  "s4.p2": "您也可以通过“文件”App 导入图片。这会使用 iOS 标准的文稿选择器，它只将您选中的那一个文件交给本应用，无需任何持续授权。",
+  "s4.p3": "这些权限只会在您尝试使用相关功能时才请求，绝不会在启动时自动请求。您可以随时在 iOS“设置”→“隐私与安全性”中撤销。",
+  "s5.h": "您添加到照片中的信息",
+  "s5.p1": "WatermarkIT 可以使用标准的 IPTC 和 TIFF 字段，将署名信息——您的姓名与版权声明——写入所导出照片的元数据中。这正是署名能在裁剪后依然保留的原因。",
+  "s5.p2": "有两点需要说明：",
+  "s5.li1": "写入的内容是 <strong>您自己输入的文字</strong>。WatermarkIT 绝不会插入我们的名称、设备标识符、您的位置或任何隐藏的追踪数据。",
+  "s5.li2": "该元数据写入导出的文件中，因此会 <strong>随文件一同传递到您发送的任何地方</strong>。这正是此功能的用意——但也意味着您分享照片的对象都能读到您填写的姓名。",
+  "s5.p3": "署名是可选的。您可以在导出面板中为单次导出关闭它，或在设置中默认关闭。您的现有照片绝不会被修改——每次导出都会写为新文件。",
+  "s6.h": "本地数据存储",
+  "s6.p1": "本应用 <strong>仅在您的设备上</strong> 存储以下数据：",
+  "s6.li1": "您创建的水印模板与预设（名称、字体、大小、颜色、不透明度、旋转、平铺与位置）",
+  "s6.li2": "已保存模板的缩略图",
+  "s6.li3": "最近作品——您导出过的照片的本地记录，方便重新打开或再次导出",
+  "s6.li4": "应用偏好设置，例如默认导出质量、格式，以及是否包含署名",
+  "s6.p2": "这些数据绝不会离开您的设备。它们存储在本应用的本地容器中，并在您卸载应用时自动删除。",
+  "s7.h": "第三方服务",
+  "s7.p1": "本应用不会与第三方广告网络共享您的数据。我们可能会使用经过验证的第三方 SDK 或服务商，用于应用分析、崩溃报告或订阅管理。此类服务的接入严格限于支持应用功能和改善使用体验。",
+  "s8.h": "儿童隐私",
+  "s8.p1": "WatermarkIT 面向普通用户设计。我们不会在知情的情况下收集 13 岁以下儿童的个人信息。若您认为我们无意中收集了此类信息，请联系我们，我们会尽快处理。",
+  "s9.h": "数据安全",
+  "s9.p1": "由于 WatermarkIT 不传输任何数据，因此不存在需要保护的传输中数据。所有本地存储的数据都受 iOS 内置设备加密保护，只要您为设备设置了密码，该加密即会启用。",
+  "s10.h": "本政策的变更",
+  "s10.p1": "我们可能会不时更新隐私政策。任何变更都会发布在本页面，并更新“最后更新”日期。建议您定期查看本政策。",
+  "s11.h": "您的权利",
+  "s11.p1": "根据您所在地区，您可能依据当地法规（如 GDPR 或 CCPA）享有与数据相关的权利。由于您的大部分数据（如模板和照片）都存储在本地，您可以在应用内修改或删除相关项目，或卸载应用，以直接进行管理。",
+  "contact.h": "对隐私有疑问？",
+  "contact.p": "如果您对本隐私政策有任何疑问或顾虑，欢迎联系我们，我们很乐意提供帮助。",
+  "footer.support": "支持",
+  "footer.made": "为 iOS 用 ❤️ 打造"
+ },
+ "zh-Hant": {
+  "nav.support": "支援",
+  "lang.label": "語言",
+  "hero.title": "隱私權政策",
+  "hero.meta": "生效日期：2026 年 6 月 1 日 &nbsp;·&nbsp; 最後更新：2026 年 9 月 1 日",
+  "trans.note": "本譯文僅供參考，以英文版為準。",
+  "sum.1": "裝置端處理",
+  "sum.2": "重視隱私",
+  "sum.3": "不上傳雲端",
+  "sum.4": "安全的本機儲存",
+  "s1.h": "總覽",
+  "s1.p1": "WatermarkIT 不會收集、儲存、傳輸或分享任何個人資料或圖片。所有處理都完全在您的裝置上完成。",
+  "s1.p2": "本隱私權政策說明 WatermarkIT iOS App（下稱「本 App」「我們」）如何處理您的資訊。我們承諾保護您的隱私，並對我們的做法保持透明。",
+  "s2.h": "資料的收集與使用",
+  "s2.p1": "<strong>我們的絕對承諾：</strong>在任何情況下，我們都不會存取、上傳、傳輸或儲存您的照片。所有影像處理都完全在您的裝置本機進行。",
+  "s2.p2": "目前本 App 不會收集個人識別資訊（如姓名或電子郵件地址）。即使我們日後推出帳號、訂閱或基本的使用分析／當機報告等功能，您的照片仍會 100% 保持私密，我們絕不會存取、上傳或儲存。",
+  "s3.h": "本 App 的運作方式",
+  "s3.p1": "WatermarkIT 是一款完全離線、在裝置上執行的 App。使用時的實際流程如下：",
+  "s3.li1": "您從照片圖庫、相機或「檔案」App 中選擇一張照片",
+  "s3.li2": "本 App 在您的裝置本機讀取該照片",
+  "s3.li3": "所有浮水印處理——文字、標誌、手寫簽名、QR 碼與並排重複——都完全在您的裝置上完成",
+  "s3.li4": "QR 碼是使用 Apple 內建的 Core Image 框架在裝置端產生，您輸入的連結絕不會被傳輸",
+  "s3.li5": "結果會儲存回您的本機相機膠卷，或透過 iOS 分享工作表分享",
+  "s3.li6": "您的照片以及由其衍生的任何資料，在任何環節都不會被傳送到外部伺服器",
+  "s4.h": "裝置權限",
+  "s4.p1": "本 App 會要求下列 iOS 權限：",
+  "s4.li1": "<strong>照片圖庫讀取權限</strong>——讓您能選擇要加上浮水印的照片。我們只會存取您明確選擇的照片。",
+  "s4.li2": "<strong>照片圖庫寫入權限</strong>——將加上浮水印的影像儲存回您的相機膠卷。",
+  "s4.li3": "<strong>相機權限</strong>——僅在您選擇於 App 內拍攝新照片時使用，讓您不必先儲存未加浮水印的原始檔即可直接加註。本 App 絕不會自行開啟相機，您拍攝的照片與其他照片一樣：在裝置端處理，絕不上傳。",
+  "s4.p2": "您也可以透過「檔案」App 匯入影像。這會使用 iOS 標準的文件選擇器，只將您選取的那一個檔案交給本 App，不需要任何持續授權。",
+  "s4.p3": "這些權限只會在您嘗試使用相關功能時才要求，絕不會在啟動時自動要求。您可以隨時在 iOS「設定」→「隱私權與安全性」中撤銷。",
+  "s5.h": "您加入照片中的資訊",
+  "s5.p1": "WatermarkIT 可以使用標準的 IPTC 與 TIFF 欄位，將署名資訊——您的姓名與版權聲明——寫入您匯出照片的中繼資料。這正是署名能在裁切後依然保留的原因。",
+  "s5.p2": "有兩點需要說明：",
+  "s5.li1": "寫入的內容是 <strong>您自己輸入的文字</strong>。WatermarkIT 絕不會插入我們的名稱、裝置識別碼、您的位置或任何隱藏的追蹤資料。",
+  "s5.li2": "這些中繼資料會寫入匯出的檔案，因此會 <strong>隨檔案一同傳到您傳送的任何地方</strong>。這正是此功能的用意——但也表示您分享照片的對象都能讀到您填寫的姓名。",
+  "s5.p3": "署名是選用的。您可以在匯出工作表中為單次匯出關閉它，或在設定中預設關閉。您現有的照片絕不會被更動——每次匯出都會寫成新的檔案。",
+  "s6.h": "本機資料儲存",
+  "s6.p1": "本 App <strong>僅在您的裝置上</strong> 儲存下列資料：",
+  "s6.li1": "您建立的浮水印範本與預設集（名稱、字型、大小、顏色、不透明度、旋轉、並排重複與位置）",
+  "s6.li2": "已儲存範本的縮圖",
+  "s6.li3": "最近作品——您匯出過的照片的本機記錄，方便重新開啟或再次匯出",
+  "s6.li4": "App 偏好設定，例如預設匯出品質、格式，以及是否包含署名",
+  "s6.p2": "這些資料絕不會離開您的裝置。它們儲存在本 App 的本機容器中，並在您移除 App 時自動刪除。",
+  "s7.h": "第三方服務",
+  "s7.p1": "本 App 不會與第三方廣告聯播網分享您的資料。我們可能會使用經過驗證的第三方 SDK 或服務供應商，用於 App 分析、當機報告或訂閱管理。此類服務的整合嚴格限於支援 App 功能與改善使用體驗。",
+  "s8.h": "兒童隱私",
+  "s8.p1": "WatermarkIT 是為一般使用者設計的。我們不會在知情的情況下收集 13 歲以下兒童的個人資訊。若您認為我們無意中收集了此類資訊，請與我們聯絡，我們會盡快處理。",
+  "s9.h": "資料安全",
+  "s9.p1": "由於 WatermarkIT 不傳輸任何資料，因此不存在需要保護的傳輸中資料。所有本機儲存的資料都受 iOS 內建的裝置加密保護，只要您為裝置設定了密碼，該加密便會啟用。",
+  "s10.h": "本政策的變更",
+  "s10.p1": "我們可能會不時更新隱私權政策。任何變更都會公布在本頁面，並更新「最後更新」日期。建議您定期查看本政策。",
+  "s11.h": "您的權利",
+  "s11.p1": "依您所在地區，您可能依據當地法規（如 GDPR 或 CCPA）享有與資料相關的權利。由於您的大部分資料（如範本與照片）都儲存在本機，您可以在 App 內修改或刪除項目，或移除 App，以直接管理。",
+  "contact.h": "對隱私有疑問嗎？",
+  "contact.p": "如果您對本隱私權政策有任何疑問或疑慮，歡迎與我們聯絡，我們很樂意提供協助。",
+  "footer.support": "支援",
+  "footer.made": "為 iOS 用 ❤️ 打造"
+ }
+};
+
+  const SUPPORTED = Object.keys(I18N);
+  const RTL = new Set(['ar']);
+
+  // ?lang= wins (that is what the app passes), then a previous choice on this
+  // device, then the browser's own preference. Anything unrecognised falls back
+  // to English rather than showing empty nodes.
+  function resolveLang() {
+    const q = new URLSearchParams(location.search).get('lang');
+    let stored = null;
+    try { stored = localStorage.getItem('wmk-lang'); } catch (e) {}
+    for (const cand of [q, stored, ...(navigator.languages || [navigator.language || ''])]) {
+      if (!cand) continue;
+      if (I18N[cand]) return cand;
+      const low = cand.toLowerCase();
+      if (low.startsWith('zh')) {
+        return /hant|tw|hk|mo/.test(low) ? 'zh-Hant' : 'zh-Hans';
+      }
+      const base = low.split('-')[0];
+      const hit = SUPPORTED.find(l => l.toLowerCase().split('-')[0] === base);
+      if (hit) return hit;
+    }
+    return 'en';
+  }
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dir = RTL.has(lang) ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = dict[el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;   // authored strings, not user input
+    });
+
+    document.title = 'WatermarkIT \u2014 ' + (dict['hero.title'] || '');
+    const pick = document.getElementById('langpick');
+    if (pick) { pick.value = lang; pick.setAttribute('aria-label', dict['lang.label'] || 'Language'); }
+
+    // Carry the choice across the site's own links so the next page opens in
+    // the same language.
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || !/^(index|support|privacy)\.html/.test(href)) return;
+      const u = new URL(href, location.href);
+      u.searchParams.set('lang', lang);
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search);
+    });
+
+    try { localStorage.setItem('wmk-lang', lang); } catch (e) {}
+  }
+
+  applyLang(resolveLang());
+
+  document.getElementById('langpick').addEventListener('change', e => {
+    applyLang(e.target.value);
+    const u = new URL(location.href);
+    u.searchParams.set('lang', e.target.value);
+    history.replaceState(null, '', u);
+  });
+
   document.getElementById('yr-privacy').textContent = new Date().getFullYear();
 </script>
 </body>
