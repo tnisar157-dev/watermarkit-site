@@ -454,6 +454,46 @@
     .footer-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
     .footer-copy { width: 100%; text-align: center; color: var(--muted); font-size: 13px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+    /* ── i18n ───────────────────────────────────── */
+    .langpick {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 12px;
+      cursor: pointer;
+      appearance: none;
+    }
+    .langpick:focus-visible { outline: 2px solid var(--green-light); outline-offset: 2px; }
+    .trans-note {
+      max-width: 1100px;
+      margin: 0 auto 8px;
+      padding: 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .trans-note:empty { display: none; }
+    /* The picker is one more item in a nav that was already tight. Below 640
+       the two in-page anchors go, since scrolling reaches those sections
+       anyway, and Support / the CTA / the picker stay. */
+    .nav-cta { white-space: nowrap; }
+    @media (max-width: 760px) { .nav-links { gap: 16px; } }
+    @media (max-width: 640px) { .nav-links .nav-link[href^="#"] { display: none; } }
+    /* Below 480 even three items overflow. The nav CTA is the one to drop:
+       the hero's own download button is on screen at that width anyway, so
+       nothing is lost, and the picker stays reachable. */
+    @media (max-width: 480px) { .nav-links .nav-cta { display: none; } }
+    /* The step connector is physically sided. */
+    [dir="rtl"] .step:not(:last-child)::after { right: auto; left: -12px; content: '←'; }
+    :lang(ar) body { font-family: 'Inter', 'Geeza Pro', system-ui, sans-serif; }
+    :lang(ja) body { font-family: 'Inter', 'Hiragino Sans', 'Yu Gothic', system-ui, sans-serif; }
+    :lang(zh-Hans) body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif; }
+    :lang(zh-Hant) body { font-family: 'Inter', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif; }
   </style>
 </head>
 <body>
@@ -466,10 +506,17 @@
         WatermarkIT
       </a>
       <div class="nav-links">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#privacy" class="nav-link">Privacy</a>
-        <a href="support.html" class="nav-link">Support</a>
-        <a href="#download" class="nav-cta">Get it Free</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features"></a>
+        <a href="#privacy" class="nav-link" data-i18n="nav.privacy"></a>
+        <a href="support.html" class="nav-link" data-i18n="nav.support"></a>
+        <a href="#download" class="nav-cta" data-i18n="nav.cta"></a>
+        <select class="langpick" id="langpick">
+          <option value="en">English</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+          <option value="ar">العربية</option>
+          <option value="ja">日本語</option>
+        </select>
       </div>
     </div>
   </nav>
@@ -479,81 +526,86 @@
     <div class="hero-glow"></div>
     <div class="badge">
       <span class="badge-dot"></span>
-      Version 1.1 — now free, now on iOS 18
+      <span data-i18n="hero.badge"></span>
     </div>
-    <h1>Watermark your photos<br><span class="gradient-text">beautifully & privately</span></h1>
-    <p class="hero-sub">Mark a photo with text, your logo, your own handwritten signature, or a scannable QR code — then tile it so there is no clean corner left to crop. Work one photo at a time or batch a whole shoot. Everything is processed on your device, never in the cloud.</p>
+    <h1><span data-i18n="hero.h1a"></span><br><span class="gradient-text" data-i18n="hero.h1b"></span></h1>
+    <p class="hero-sub" data-i18n="hero.sub"></p>
     <div class="hero-actions">
-      <a href="#download" class="btn-primary" id="hero-download-btn">
-        Download Free on the App Store
-      </a>
-      <a href="#features" class="btn-secondary">See Features →</a>
+      <a href="#download" class="btn-primary" id="hero-download-btn" data-i18n="hero.download"></a>
+      <a href="#features" class="btn-secondary" data-i18n="hero.features"></a>
     </div>
     <div class="privacy-strip">
-      <span><span class="icon">🔒</span> On-Device Processing</span>
-      <span><span class="icon">🛡️</span> Privacy-Focused</span>
-      <span><span class="icon">☁️</span> No Cloud Uploads</span>
-      <span><span class="icon">📴</span> Works Fully Offline</span>
+      <span><span class="icon">🔒</span> <span data-i18n="strip1"></span></span>
+      <span><span class="icon">🛡️</span> <span data-i18n="strip2"></span></span>
+      <span><span class="icon">☁️</span> <span data-i18n="strip3"></span></span>
+      <span><span class="icon">📴</span> <span data-i18n="strip4"></span></span>
     </div>
   </div>
+
+  <p class="trans-note" data-i18n="trans.note"></p>
 
   <!-- FEATURES -->
   <section id="features">
     <div class="section-inner">
-      <div class="section-label">Features</div>
-      <h2 class="section-title">Everything you need to protect your photos</h2>
-      <p class="section-sub">Four ways to mark a photo, and one mark nobody can crop off. Powerful where it counts, simple everywhere else.</p>
+      <div class="section-label" data-i18n="feat.label"></div>
+      <h2 class="section-title" data-i18n="feat.title"></h2>
+      <p class="section-sub" data-i18n="feat.sub"></p>
       <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">✏️</div>
-          <h3>Text Watermarks</h3>
-          <p>22 typefaces — sans, serif, monospace, script and handwriting — with full control over size, colour and opacity. Add a shadow or an outline so your mark stays readable on busy photos.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🖼️</div>
-          <h3>Logo Watermarks</h3>
-          <p>Bring in your own logo and place it anywhere. Rotate a full 360°, flip it horizontally or vertically, and scale across a wide size range. PNG transparency supported.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">✍️</div>
-          <h3>Sign It by Hand</h3>
-          <p>Draw your signature straight onto the photo in any ink colour, with undo and redo. The closest thing to signing a print, without leaving your phone.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
-          <h3>QR Code Marks</h3>
-          <p>Turn a link into a scannable mark that points at your portfolio, your shop, or your licence terms. Generated entirely on your device — no server ever sees the URL.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧱</div>
-          <h3>Tiling</h3>
-          <p>Repeat your mark across the whole photo with adjustable spacing, so there is no clean corner left to crop out. The proofing standard, built in.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🪪</div>
-          <h3>Invisible Credit</h3>
-          <p>Write your name and copyright into the exported file's IPTC and TIFF fields. It travels with the file and survives cropping — a claim to the image even when the visible mark is gone.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Eight Built-In Presets</h3>
-          <p>Named for the job, not the settings: Client Proof, Confidential, Draft, Photo Credit, Social Handle, Tiled Proof, Date Stamp and Fine Print. Tap one and you are done.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📦</div>
-          <h3>Batch Processing</h3>
-          <p>Select multiple photos and apply the same mark to all of them at once. Perfect for product shoots, portfolios and social media sets.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <h3>Reusable Templates</h3>
-          <p>Save your own watermark styles as named templates and reuse them with one tap. Reopen anything from Recent Work on the home screen and send it out again.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📤</div>
-          <h3>Export for Where It's Going</h3>
-          <p>JPEG, PNG or HEIC. Shapes for 1:1, 4:5, 9:16 and 16:9 with Fit or Fill. Original, Large or Web sizes with real dimensions and an estimated file size — and name the files yourself.</p>
-        </div>
+          <div class="feature-card">
+            <div class="feature-icon">✏️</div>
+            <h3 data-i18n="f1.h"></h3>
+            <p data-i18n="f1.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🖼️</div>
+            <h3 data-i18n="f2.h"></h3>
+            <p data-i18n="f2.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">✍️</div>
+            <h3 data-i18n="f3.h"></h3>
+            <p data-i18n="f3.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔗</div>
+            <h3 data-i18n="f4.h"></h3>
+            <p data-i18n="f4.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🧱</div>
+            <h3 data-i18n="f5.h"></h3>
+            <p data-i18n="f5.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🪪</div>
+            <h3 data-i18n="f6.h"></h3>
+            <p data-i18n="f6.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 data-i18n="f7.h"></h3>
+            <p data-i18n="f7.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📦</div>
+            <h3 data-i18n="f8.h"></h3>
+            <p data-i18n="f8.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3 data-i18n="f9.h"></h3>
+            <p data-i18n="f9.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📤</div>
+            <h3 data-i18n="f10.h"></h3>
+            <p data-i18n="f10.p"></p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3 data-i18n="f11.h"></h3>
+            <p data-i18n="f11.p"></p>
+          </div>
       </div>
     </div>
   </section>
@@ -561,25 +613,25 @@
   <!-- HOW IT WORKS -->
   <section style="padding-top: 0;">
     <div class="section-inner">
-      <div class="section-label">How It Works</div>
-      <h2 class="section-title">Three steps. Done.</h2>
-      <p class="section-sub">Simple, intuitive interface. Just open the app and go.</p>
+      <div class="section-label" data-i18n="how.label"></div>
+      <h2 class="section-title" data-i18n="how.title"></h2>
+      <p class="section-sub" data-i18n="how.sub"></p>
       <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Pick a Photo</h3>
-          <p>Choose from your library, take a new one with the camera, or import from Files. Recent Work on the home screen brings back anything you have already made.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Add Your Watermark</h3>
-          <p>Type your text, add a logo, sign by hand, or generate a QR code. Tap a preset to skip straight to a finished look, then tile it if you want full coverage.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Export & Share</h3>
-          <p>Save to your Camera Roll in JPEG, PNG or HEIC — cropped to shape if you need it — or share straight out through any iOS share sheet.</p>
-        </div>
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3 data-i18n="st1.h"></h3>
+            <p data-i18n="st1.p"></p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3 data-i18n="st2.h"></h3>
+            <p data-i18n="st2.p"></p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3 data-i18n="st3.h"></h3>
+            <p data-i18n="st3.p"></p>
+          </div>
       </div>
     </div>
   </section>
@@ -589,21 +641,21 @@
     <div class="section-inner">
       <div class="privacy-section">
         <div>
-          <div class="section-label">New in 1.1</div>
-          <h2>A mark they cannot crop off</h2>
-          <p>A visible watermark can be cropped, cloned out, or blurred away. So WatermarkIT also writes your name and copyright <strong style="color:#fff;">inside the photo file itself</strong> — into the standard IPTC and TIFF fields that photo editors, stock libraries and asset managers already read.</p>
-          <p style="margin-top:14px;">Crop the picture, and the credit is still there. It is your name, never ours, and you can switch it off for any export.</p>
+          <div class="section-label" data-i18n="crop.label"></div>
+          <h2 data-i18n="crop.h"></h2>
+          <p data-i18n="crop.p1"></p>
+          <p style="margin-top:14px;" data-i18n="crop.p2"></p>
           <div class="privacy-pills">
-            <span class="pill">✓ Survives cropping</span>
-            <span class="pill">✓ Standard IPTC &amp; TIFF fields</span>
-            <span class="pill">✓ Written on your device</span>
-            <span class="pill">✓ Off with one tap</span>
+            <span class="pill" data-i18n="crop.pill1"></span>
+            <span class="pill" data-i18n="crop.pill2"></span>
+            <span class="pill" data-i18n="crop.pill3"></span>
+            <span class="pill" data-i18n="crop.pill4"></span>
           </div>
         </div>
         <div class="privacy-visual">
           <div class="privacy-big-icon">🪪</div>
-          <h3>Credit That Travels</h3>
-          <p>Your byline and copyright ride along with the file wherever it goes.</p>
+          <h3 data-i18n="crop.vh"></h3>
+          <p data-i18n="crop.vp"></p>
         </div>
       </div>
     </div>
@@ -614,20 +666,20 @@
     <div class="section-inner">
       <div class="privacy-section">
         <div>
-          <div class="section-label">Privacy First</div>
-          <h2>Your photos never leave your phone</h2>
-          <p>WatermarkIT processes everything entirely on your device. We absolutely commit that your photos are never accessed, uploaded, or stored by us under any circumstances.</p>
+          <div class="section-label" data-i18n="priv.label"></div>
+          <h2 data-i18n="priv.h"></h2>
+          <p data-i18n="priv.p"></p>
           <div class="privacy-pills">
-            <span class="pill">✓ On-device rendering</span>
-            <span class="pill">✓ Privacy-first design</span>
-            <span class="pill">✓ Photos never uploaded or stored</span>
-            <span class="pill">✓ Works fully offline</span>
+            <span class="pill" data-i18n="priv.pill1"></span>
+            <span class="pill" data-i18n="priv.pill2"></span>
+            <span class="pill" data-i18n="priv.pill3"></span>
+            <span class="pill" data-i18n="priv.pill4"></span>
           </div>
         </div>
         <div class="privacy-visual">
           <div class="privacy-big-icon">🔒</div>
-          <h3>100% On-Device</h3>
-          <p>All processing happens locally on your device. Your images are yours — always.</p>
+          <h3 data-i18n="priv.vh"></h3>
+          <p data-i18n="priv.vp"></p>
         </div>
       </div>
     </div>
@@ -635,11 +687,9 @@
 
   <!-- CTA / DOWNLOAD -->
   <div class="cta-section" id="download">
-    <h2>Start watermarking today</h2>
-    <p>WatermarkIT is free on the App Store, and runs on iOS 18 and later. No account, no cloud, no catch.</p>
-    <a href="https://apps.apple.com/app/id6797597563" class="btn-white" id="app-store-link">
-      Download Free on the App Store
-    </a>
+    <h2 data-i18n="cta.h"></h2>
+    <p data-i18n="cta.p"></p>
+    <a href="https://apps.apple.com/app/id6797597563" class="btn-white" id="app-store-link" data-i18n="cta.btn"></a>
   </div>
 
   <!-- FOOTER -->
@@ -650,14 +700,485 @@
         WatermarkIT
       </a>
       <div class="footer-links">
-        <a href="support.html">Support</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html" data-i18n="foot.support"></a>
+        <a href="privacy.html" data-i18n="foot.privacy"></a>
       </div>
-      <p class="footer-copy">© <span id="yr-index"></span> WatermarkIT. Made with ❤️ for iOS. All rights reserved.</p>
+      <p class="footer-copy">© <span id="yr-index"></span> <span data-i18n="foot.copy"></span></p>
     </div>
   </footer>
 
 <script>
+  // Translations. English is the source text and stays authoritative.
+  const I18N = {
+ "en": {
+  "lang.label": "Language",
+  "trans.note": "",
+  "nav.features": "Features",
+  "nav.privacy": "Privacy",
+  "nav.support": "Support",
+  "nav.cta": "Get it Free",
+  "hero.badge": "Version 1.1.2 — now in Arabic, Japanese and Traditional Chinese",
+  "hero.h1a": "Watermark your photos",
+  "hero.h1b": "beautifully &amp; privately",
+  "hero.sub": "Mark a photo with text, your logo, your own handwritten signature, or a scannable QR code — then tile it so there is no clean corner left to crop. Work one photo at a time or batch a whole shoot. Everything is processed on your device, never in the cloud.",
+  "hero.download": "Download Free on the App Store",
+  "hero.features": "See Features →",
+  "strip1": "On-Device Processing",
+  "strip2": "Privacy-Focused",
+  "strip3": "No Cloud Uploads",
+  "strip4": "Works Fully Offline",
+  "feat.label": "Features",
+  "feat.title": "Everything you need to protect your photos",
+  "feat.sub": "Four ways to mark a photo, and one mark nobody can crop off. Powerful where it counts, simple everywhere else.",
+  "f1.h": "Text Watermarks",
+  "f1.p": "22 typefaces — sans, serif, monospace, script and handwriting — with full control over size, colour and opacity. Add a shadow or an outline so your mark stays readable on busy photos.",
+  "f2.h": "Logo Watermarks",
+  "f2.p": "Bring in your own logo and place it anywhere. Rotate a full 360°, flip it horizontally or vertically, and scale across a wide size range. PNG transparency supported.",
+  "f3.h": "Sign It by Hand",
+  "f3.p": "Draw your signature straight onto the photo in any ink colour, with undo and redo. The closest thing to signing a print, without leaving your phone.",
+  "f4.h": "QR Code Marks",
+  "f4.p": "Turn a link into a scannable mark that points at your portfolio, your shop, or your licence terms. Generated entirely on your device — no server ever sees the URL.",
+  "f5.h": "Tiling",
+  "f5.p": "Repeat your mark across the whole photo with adjustable spacing, so there is no clean corner left to crop out. The proofing standard, built in.",
+  "f6.h": "Invisible Credit",
+  "f6.p": "Write your name and copyright into the exported file’s IPTC and TIFF fields. It travels with the file and survives cropping — a claim to the image even when the visible mark is gone.",
+  "f7.h": "Eight Built-In Presets",
+  "f7.p": "Named for the job, not the settings: Client Proof, Confidential, Draft, Photo Credit, Social Handle, Tiled Proof, Date Stamp and Fine Print. Tap one and you are done.",
+  "f8.h": "Batch Processing",
+  "f8.p": "Select multiple photos and apply the same mark to all of them at once. Perfect for product shoots, portfolios and social media sets.",
+  "f9.h": "Reusable Templates",
+  "f9.p": "Save your own watermark styles as named templates and reuse them with one tap. Reopen anything from Recent Work on the home screen and send it out again.",
+  "f10.h": "Export for Where It’s Going",
+  "f10.p": "JPEG, PNG or HEIC. Shapes for 1:1, 4:5, 9:16 and 16:9 with Fit or Fill. Original, Large or Web sizes with real dimensions and an estimated file size — and name the files yourself.",
+  "how.label": "How It Works",
+  "how.title": "Three steps. Done.",
+  "how.sub": "Simple, intuitive interface. Just open the app and go.",
+  "st1.h": "Pick a Photo",
+  "st1.p": "Choose from your library, take a new one with the camera, or import from Files. Recent Work on the home screen brings back anything you have already made.",
+  "st2.h": "Add Your Watermark",
+  "st2.p": "Type your text, add a logo, sign by hand, or generate a QR code. Tap a preset to skip straight to a finished look, then tile it if you want full coverage.",
+  "st3.h": "Export &amp; Share",
+  "st3.p": "Save to your Camera Roll in JPEG, PNG or HEIC — cropped to shape if you need it — or share straight out through any iOS share sheet.",
+  "crop.label": "Crop-Proof Credit",
+  "crop.h": "A mark they cannot crop off",
+  "crop.p1": "A visible watermark can be cropped, cloned out, or blurred away. So WatermarkIT also writes your name and copyright <strong style=\"color:#fff;\">inside the photo file itself</strong> — into the standard IPTC and TIFF fields that photo editors, stock libraries and asset managers already read.",
+  "crop.p2": "Crop the picture, and the credit is still there. It is your name, never ours, and you can switch it off for any export.",
+  "crop.pill1": "✓ Survives cropping",
+  "crop.pill2": "✓ Standard IPTC &amp; TIFF fields",
+  "crop.pill3": "✓ Written on your device",
+  "crop.pill4": "✓ Off with one tap",
+  "crop.vh": "Credit That Travels",
+  "crop.vp": "Your byline and copyright ride along with the file wherever it goes.",
+  "priv.label": "Privacy First",
+  "priv.h": "Your photos never leave your phone",
+  "priv.p": "WatermarkIT processes everything entirely on your device. We absolutely commit that your photos are never accessed, uploaded, or stored by us under any circumstances.",
+  "priv.pill1": "✓ On-device rendering",
+  "priv.pill2": "✓ Privacy-first design",
+  "priv.pill3": "✓ Photos never uploaded or stored",
+  "priv.pill4": "✓ Works fully offline",
+  "priv.vh": "100% On-Device",
+  "priv.vp": "All processing happens locally on your device. Your images are yours — always.",
+  "cta.h": "Start watermarking today",
+  "cta.p": "WatermarkIT is free on the App Store, and runs on iOS 18 and later. No account, no cloud, no catch.",
+  "cta.btn": "Download Free on the App Store",
+  "foot.support": "Support",
+  "foot.privacy": "Privacy Policy",
+  "foot.copy": "WatermarkIT. Made with ❤️ for iOS. All rights reserved.",
+  "f11.h": "Speaks Your Language",
+  "f11.p": "The whole app in Arabic, English, Japanese and Traditional Chinese — not just the store page. Arabic lays out right to left throughout, and you can switch language in Settings without changing your device."
+ },
+ "ar": {
+  "lang.label": "اللغة",
+  "trans.note": "هذه الترجمة مقدّمة للتسهيل فقط، والنسخة الإنجليزية هي المرجع المعتمد.",
+  "nav.features": "المزايا",
+  "nav.privacy": "الخصوصية",
+  "nav.support": "الدعم",
+  "nav.cta": "احصل عليه مجانًا",
+  "hero.badge": "الإصدار 1.1.2 — متوفر الآن بالعربية واليابانية والصينية التقليدية",
+  "hero.h1a": "ضع علامتك على صورك",
+  "hero.h1b": "بأناقة وخصوصية",
+  "hero.sub": "ضع على صورتك نصًا أو شعارك أو توقيعك بخط يدك أو رمز QR قابلًا للمسح، ثم كرّره حتى لا تبقى زاوية نظيفة يمكن اقتصاصها. اعمل على صورة واحدة أو على جلسة تصوير كاملة دفعة واحدة. تتم كل المعالجة على جهازك، لا في السحابة.",
+  "hero.download": "نزّله مجانًا من App Store",
+  "hero.features": "استعرض المزايا ←",
+  "strip1": "معالجة على الجهاز",
+  "strip2": "تركّز على الخصوصية",
+  "strip3": "لا رفع إلى السحابة",
+  "strip4": "يعمل دون اتصال تمامًا",
+  "feat.label": "المزايا",
+  "feat.title": "كل ما تحتاجه لحماية صورك",
+  "feat.sub": "أربع طرق لوضع علامة على صورة، وعلامة واحدة لا يستطيع أحد اقتصاصها. قوي حيث يهم، وبسيط في كل ما عداه.",
+  "f1.h": "علامات نصية",
+  "f1.p": "‏22 خطًا — بلا زخرفة ومزخرف وثابت العرض ومائل ويدوي — مع تحكّم كامل في الحجم واللون والشفافية. أضف ظلًا أو حدودًا ليبقى النص واضحًا فوق الصور المزدحمة.",
+  "f2.h": "علامات بالشعار",
+  "f2.p": "أدرج شعارك الخاص وضعه في أي مكان. أدره 360° كاملة، واقلبه أفقيًا أو رأسيًا، وغيّر حجمه ضمن نطاق واسع. ويُدعم تدرّج شفافية PNG.",
+  "f3.h": "وقّع بخط يدك",
+  "f3.p": "ارسم توقيعك مباشرة على الصورة بأي لون حبر، مع التراجع والإعادة. أقرب شيء إلى التوقيع على نسخة مطبوعة، دون مغادرة هاتفك.",
+  "f4.h": "علامات برمز QR",
+  "f4.p": "حوّل رابطًا إلى علامة قابلة للمسح تشير إلى معرض أعمالك أو متجرك أو شروط الترخيص. يُنشأ على جهازك بالكامل، ولا يرى أي خادم الرابط.",
+  "f5.h": "التكرار",
+  "f5.p": "كرّر علامتك على الصورة كاملة بتباعد قابل للضبط، فلا تبقى زاوية نظيفة يمكن اقتصاصها. معيار المراجعة، مدمجًا.",
+  "f6.h": "نسبة غير مرئية",
+  "f6.p": "اكتب اسمك وحقوق النشر في حقلي IPTC وTIFF بالملف المُصدَّر. تنتقل مع الملف وتصمد أمام الاقتصاص، فتبقى لك مطالبة بالصورة حتى بعد زوال العلامة المرئية.",
+  "f7.h": "ثمانية إعدادات مسبقة",
+  "f7.p": "مسمّاة حسب الغرض لا حسب الإعدادات: نسخة للعميل، سرّي، مسودة، نسبة الصورة، معرّف التواصل، نسخة مكرّرة، ختم التاريخ، وسطر صغير. اضغط واحدًا وانتهى الأمر.",
+  "f8.h": "المعالجة الدفعية",
+  "f8.p": "حدّد عدة صور وطبّق العلامة نفسها عليها جميعًا دفعة واحدة. مثالي لتصوير المنتجات ومعارض الأعمال ومجموعات التواصل الاجتماعي.",
+  "f9.h": "قوالب قابلة لإعادة الاستخدام",
+  "f9.p": "احفظ أنماط علاماتك كقوالب بأسماء وأعد استخدامها بضغطة واحدة. أعد فتح أي عمل من «الأعمال الأخيرة» في الشاشة الرئيسية وأرسله من جديد.",
+  "f10.h": "صدّر بما يناسب وجهته",
+  "f10.p": "‏JPEG أو PNG أو HEIC. وأشكال 1:1 و4:5 و9:16 و16:9 مع ملاءمة أو ملء. وأحجام أصلية أو كبيرة أو للويب بأبعاد حقيقية وحجم ملف تقديري — وسمِّ الملفات بنفسك.",
+  "how.label": "كيف يعمل",
+  "how.title": "ثلاث خطوات. وانتهيت.",
+  "how.sub": "واجهة بسيطة وبديهية. افتح التطبيق وابدأ.",
+  "st1.h": "اختر صورة",
+  "st1.p": "اختر من مكتبتك، أو التقط صورة جديدة بالكاميرا، أو استورد من الملفات. و«الأعمال الأخيرة» في الشاشة الرئيسية تعيد إليك كل ما أنجزته سابقًا.",
+  "st2.h": "أضف علامتك",
+  "st2.p": "اكتب نصك، أو أضف شعارًا، أو وقّع بيدك، أو أنشئ رمز QR. اضغط إعدادًا مسبقًا للوصول مباشرة إلى نتيجة نهائية، ثم كرّره إن أردت تغطية كاملة.",
+  "st3.h": "التصدير والمشاركة",
+  "st3.p": "احفظ في ألبوم الصور بصيغة JPEG أو PNG أو HEIC — مقتصًّا على الشكل إن احتجت — أو شارك مباشرة عبر أي ورقة مشاركة في iOS.",
+  "crop.label": "نسبة تصمد أمام الاقتصاص",
+  "crop.h": "علامة لا يستطيعون اقتصاصها",
+  "crop.p1": "يمكن اقتصاص العلامة المرئية أو إزالتها أو طمسها. لذلك يكتب WatermarkIT اسمك وحقوق النشر أيضًا <strong style=\"color:#fff;\">داخل ملف الصورة نفسه</strong> — في حقول IPTC وTIFF القياسية التي تقرأها بالفعل برامج تحرير الصور ومكتبات المحتوى وأنظمة إدارة الأصول.",
+  "crop.p2": "اقتصّ الصورة، وتبقى النسبة موجودة. إنه اسمك أنت لا اسمنا، ويمكنك إيقافه لأي عملية تصدير.",
+  "crop.pill1": "✓ تصمد أمام الاقتصاص",
+  "crop.pill2": "✓ حقول IPTC وTIFF القياسية",
+  "crop.pill3": "✓ تُكتب على جهازك",
+  "crop.pill4": "✓ تُوقف بضغطة واحدة",
+  "crop.vh": "نسبة ترافق الملف",
+  "crop.vp": "اسمك وحقوق النشر يرافقان الملف أينما ذهب.",
+  "priv.label": "الخصوصية أولًا",
+  "priv.h": "صورك لا تغادر هاتفك",
+  "priv.p": "يعالج WatermarkIT كل شيء على جهازك بالكامل. ونلتزم التزامًا مطلقًا بأن صورك لا يتم الوصول إليها أو رفعها أو تخزينها من قبلنا تحت أي ظرف.",
+  "priv.pill1": "✓ معالجة على الجهاز",
+  "priv.pill2": "✓ تصميم يضع الخصوصية أولًا",
+  "priv.pill3": "✓ لا رفع للصور ولا تخزين",
+  "priv.pill4": "✓ يعمل دون اتصال تمامًا",
+  "priv.vh": "‏100% على الجهاز",
+  "priv.vp": "تتم كل المعالجة محليًا على جهازك. صورك لك، دائمًا.",
+  "cta.h": "ابدأ وضع علامتك اليوم",
+  "cta.p": "‏WatermarkIT مجاني على App Store، ويعمل على iOS 18 وأحدث. بلا حساب، وبلا سحابة، وبلا مقابل خفي.",
+  "cta.btn": "نزّله مجانًا من App Store",
+  "foot.support": "الدعم",
+  "foot.privacy": "سياسة الخصوصية",
+  "foot.copy": "‏WatermarkIT. صُنع بـ ❤️ لـ iOS. جميع الحقوق محفوظة.",
+  "f11.h": "يتحدث لغتك",
+  "f11.p": "التطبيق بالكامل بالعربية والإنجليزية واليابانية والصينية التقليدية، لا صفحة المتجر وحدها. والعربية تُعرض من اليمين إلى اليسار في كل شاشة، ويمكنك تغيير اللغة من الإعدادات دون تغيير لغة جهازك."
+ },
+ "ja": {
+  "lang.label": "言語",
+  "trans.note": "この翻訳は便宜上のものであり、正文は英語版です。",
+  "nav.features": "機能",
+  "nav.privacy": "プライバシー",
+  "nav.support": "サポート",
+  "nav.cta": "無料で入手",
+  "hero.badge": "バージョン 1.1.2 — アラビア語・日本語・繁体字中国語に対応",
+  "hero.h1a": "写真に透かしを",
+  "hero.h1b": "美しく、プライベートに",
+  "hero.sub": "テキスト、ロゴ、手書きの署名、読み取り可能な QR コードで写真に印を付け、タイル状に並べて切り取れる余白をなくします。1 枚ずつでも、撮影一式をまとめてでも。処理はすべてデバイス内で行われ、クラウドには送られません。",
+  "hero.download": "App Store から無料でダウンロード",
+  "hero.features": "機能を見る →",
+  "strip1": "デバイス内で処理",
+  "strip2": "プライバシー重視",
+  "strip3": "クラウドへの送信なし",
+  "strip4": "完全オフラインで動作",
+  "feat.label": "機能",
+  "feat.title": "写真を守るために必要なすべて",
+  "feat.sub": "写真に印を付ける 4 つの方法と、誰にも切り取れない 1 つの印。必要なところは強力に、それ以外はシンプルに。",
+  "f1.h": "テキストの透かし",
+  "f1.p": "サンセリフ、セリフ、等幅、筆記体、手書きを含む 22 書体。サイズ、色、不透明度を自在に調整できます。影や縁取りを加えれば、情報量の多い写真でも読みやすさを保てます。",
+  "f2.h": "ロゴの透かし",
+  "f2.p": "自分のロゴを読み込んで好きな位置に配置できます。360° 回転、左右・上下の反転、広い範囲での拡大縮小に対応。PNG の透過もそのまま使えます。",
+  "f3.h": "手書きで署名",
+  "f3.p": "好きなインクの色で、写真に直接署名を描けます。取り消しとやり直しにも対応。プリントにサインする感覚を、スマートフォンの中で。",
+  "f4.h": "QR コードの印",
+  "f4.p": "リンクを読み取り可能な印に変え、ポートフォリオ、ショップ、ライセンス条項へ誘導します。生成はすべてデバイス内で行われ、URL がサーバーに渡ることはありません。",
+  "f5.h": "タイル表示",
+  "f5.p": "間隔を調整しながら写真全体に印を繰り返し、切り取れるきれいな余白をなくします。校正用の定番を、標準装備で。",
+  "f6.h": "目に見えないクレジット",
+  "f6.p": "書き出したファイルの IPTC および TIFF フィールドに、お名前と著作権表示を書き込みます。ファイルとともに移動し、トリミングされても残るため、見える印が消えても作品の帰属を主張できます。",
+  "f7.h": "8 つの組み込みプリセット",
+  "f7.p": "設定ではなく用途で名付けています。クライアント確認用、社外秘、ドラフト、フォトクレジット、SNS アカウント、タイル校正、日付スタンプ、細目。ひとつ選べば完成です。",
+  "f8.h": "バッチ処理",
+  "f8.p": "複数の写真を選んで、同じ印をまとめて適用できます。物撮り、ポートフォリオ、SNS 用のセットに最適です。",
+  "f9.h": "再利用できるテンプレート",
+  "f9.p": "自分の透かしスタイルに名前を付けて保存し、ワンタップで再利用できます。ホーム画面の「最近の作業」から開き直して、もう一度書き出すこともできます。",
+  "f10.h": "届け先に合わせて書き出す",
+  "f10.p": "JPEG、PNG、HEIC に対応。1:1、4:5、9:16、16:9 の形状をフィットまたはフィルで。オリジナル／ラージ／Web のサイズを実寸と推定ファイルサイズ付きで選べ、ファイル名も自分で付けられます。",
+  "how.label": "使い方",
+  "how.title": "3 ステップで完了。",
+  "how.sub": "シンプルで直感的。アプリを開いて始めるだけです。",
+  "st1.h": "写真を選ぶ",
+  "st1.p": "ライブラリから選ぶ、カメラで撮る、「ファイル」から読み込む。ホーム画面の「最近の作業」からは、これまでに作ったものを呼び戻せます。",
+  "st2.h": "透かしを加える",
+  "st2.p": "テキストを入力する、ロゴを加える、手書きで署名する、QR コードを生成する。プリセットをタップすれば仕上がりまで一気に進み、必要ならタイル表示で全面を覆えます。",
+  "st3.h": "書き出して共有",
+  "st3.p": "JPEG、PNG、HEIC でカメラロールに保存できます。必要なら形状に合わせてトリミングし、iOS の共有シートからそのまま送ることもできます。",
+  "crop.label": "切り取れないクレジット",
+  "crop.h": "切り取れない印",
+  "crop.p1": "目に見える透かしは、切り取られたり、消されたり、ぼかされたりします。そこで WatermarkIT は、お名前と著作権表示を <strong style=\"color:#fff;\">写真ファイルそのものの中にも</strong> 書き込みます。写真編集ソフト、ストックライブラリ、アセット管理ツールがすでに読んでいる標準の IPTC および TIFF フィールドです。",
+  "crop.p2": "写真をトリミングしても、クレジットは残ります。書き込まれるのは当方ではなくお客様の名前で、書き出しごとにオフにもできます。",
+  "crop.pill1": "✓ トリミングされても残る",
+  "crop.pill2": "✓ 標準の IPTC・TIFF フィールド",
+  "crop.pill3": "✓ デバイス内で書き込み",
+  "crop.pill4": "✓ ワンタップでオフ",
+  "crop.vh": "ついて回るクレジット",
+  "crop.vp": "あなたのバイラインと著作権表示が、ファイルの行く先どこへでもついていきます。",
+  "priv.label": "プライバシー第一",
+  "priv.h": "写真がスマートフォンから出ることはありません",
+  "priv.p": "WatermarkIT はすべてをデバイス内で処理します。お客様の写真に当方がアクセスしたり、アップロードしたり、保存したりすることは、いかなる場合もないことをお約束します。",
+  "priv.pill1": "✓ デバイス内でレンダリング",
+  "priv.pill2": "✓ プライバシー第一の設計",
+  "priv.pill3": "✓ 写真のアップロードも保存もなし",
+  "priv.pill4": "✓ 完全オフラインで動作",
+  "priv.vh": "100% デバイス内",
+  "priv.vp": "処理はすべてお使いのデバイス内で行われます。あなたの画像は、いつでもあなたのものです。",
+  "cta.h": "今日から透かしを",
+  "cta.p": "WatermarkIT は App Store で無料、iOS 18 以降で動作します。アカウントも、クラウドも、裏もありません。",
+  "cta.btn": "App Store から無料でダウンロード",
+  "foot.support": "サポート",
+  "foot.privacy": "プライバシーポリシー",
+  "foot.copy": "WatermarkIT. iOS のために ❤️ を込めて。All rights reserved.",
+  "f11.h": "あなたの言語で",
+  "f11.p": "ストアページだけでなくアプリ全体が、アラビア語、英語、日本語、繁体字中国語に対応。アラビア語では全画面が右から左のレイアウトになり、デバイスの言語を変えずに設定から表示言語を切り替えられます。"
+ },
+ "zh-Hans": {
+  "lang.label": "语言",
+  "trans.note": "本译文仅供参考，以英文版为准。",
+  "nav.features": "功能",
+  "nav.privacy": "隐私",
+  "nav.support": "支持",
+  "nav.cta": "免费获取",
+  "hero.badge": "1.1.2 版本 — 现已支持阿拉伯语、日语与繁体中文",
+  "hero.h1a": "为你的照片加水印",
+  "hero.h1b": "既好看，又私密",
+  "hero.sub": "用文字、徽标、你亲手写的签名，或一个可扫描的二维码为照片加上标记，再平铺开来，让人找不到可以裁掉的干净角落。可以一张张处理，也可以整组批量处理。所有处理都在你的设备上完成，绝不上传云端。",
+  "hero.download": "从 App Store 免费下载",
+  "hero.features": "查看功能 →",
+  "strip1": "设备端处理",
+  "strip2": "注重隐私",
+  "strip3": "不上传云端",
+  "strip4": "完全离线可用",
+  "feat.label": "功能",
+  "feat.title": "保护照片所需的一切",
+  "feat.sub": "四种给照片加标记的方式，外加一种谁也裁不掉的标记。该强大的地方强大，其余一切从简。",
+  "f1.h": "文字水印",
+  "f1.p": "22 种字体，涵盖无衬线、衬线、等宽、手写体与书法体，并可完全控制大小、颜色与不透明度。加上阴影或描边，即使照片背景繁杂也依然清晰可读。",
+  "f2.h": "徽标水印",
+  "f2.p": "导入你自己的徽标，放到任意位置。支持 360° 旋转、水平或垂直翻转，以及大幅度的缩放。同时支持 PNG 透明背景。",
+  "f3.h": "亲手签名",
+  "f3.p": "用任意墨水颜色直接在照片上书写签名，并支持撤销与重做。最接近在照片上亲笔签名的体验，全程不必离开手机。",
+  "f4.h": "二维码标记",
+  "f4.p": "把链接变成可扫描的标记，指向你的作品集、店铺或授权条款。完全在设备端生成，没有任何服务器会看到这个网址。",
+  "f5.h": "平铺",
+  "f5.p": "以可调间距把标记重复铺满整张照片，不留任何可裁掉的干净角落。校样行业的通行做法，已内置其中。",
+  "f6.h": "隐形署名",
+  "f6.p": "把你的姓名与版权写入导出文件的 IPTC 与 TIFF 字段。它随文件一同传递，并能在裁剪后保留，即使可见水印被去掉，你依然握有对作品的主张。",
+  "f7.h": "八种内置预设",
+  "f7.p": "以用途命名，而非以参数命名：客户校样、机密、草稿、照片署名、社交账号、平铺校样、日期戳与小字声明。点一下即可完成。",
+  "f8.h": "批量处理",
+  "f8.p": "选择多张照片，一次性为它们套用相同的标记。非常适合产品拍摄、作品集与社交媒体图组。",
+  "f9.h": "可复用模板",
+  "f9.p": "把你自己的水印样式保存为命名模板，一点即可复用。也可以从主屏幕的“最近作品”中重新打开任意作品，再次导出。",
+  "f10.h": "按用途导出",
+  "f10.p": "支持 JPEG、PNG 或 HEIC。提供 1:1、4:5、9:16 与 16:9 的形状，可选适应或填充。原始、大图或网页尺寸均附真实像素与预估文件大小，文件名也可自行指定。",
+  "how.label": "使用方法",
+  "how.title": "三步搞定。",
+  "how.sub": "界面简洁直观。打开 App 就能开始。",
+  "st1.h": "选择照片",
+  "st1.p": "可以从图库中选择、用相机现拍，或从“文件”导入。主屏幕上的“最近作品”还能找回你此前做过的任何一张。",
+  "st2.h": "添加水印",
+  "st2.p": "输入文字、添加徽标、亲手签名，或生成二维码。点一下预设即可直达成品效果，如需全面覆盖再平铺即可。",
+  "st3.h": "导出与分享",
+  "st3.p": "以 JPEG、PNG 或 HEIC 保存到相册，需要时可按形状裁剪，也可以通过任意 iOS 共享面板直接发送。",
+  "crop.label": "裁不掉的署名",
+  "crop.h": "一个裁不掉的标记",
+  "crop.p1": "可见的水印可能被裁掉、被涂抹、被模糊处理。因此 WatermarkIT 还会把你的姓名与版权写入 <strong style=\"color:#fff;\">照片文件本身之中</strong>，也就是图片编辑软件、图库和素材管理系统早已在读取的标准 IPTC 与 TIFF 字段。",
+  "crop.p2": "把图片裁掉一部分，署名依然还在。写入的始终是你的名字，而非我们的，并且你可以在任意一次导出时关闭它。",
+  "crop.pill1": "✓ 裁剪后依然保留",
+  "crop.pill2": "✓ 标准 IPTC 与 TIFF 字段",
+  "crop.pill3": "✓ 在你的设备上写入",
+  "crop.pill4": "✓ 一点即可关闭",
+  "crop.vh": "随行的署名",
+  "crop.vp": "你的署名与版权信息，会随文件走到哪里就跟到哪里。",
+  "priv.label": "隐私优先",
+  "priv.h": "你的照片从不离开手机",
+  "priv.p": "WatermarkIT 完全在你的设备上处理一切。我们郑重承诺，在任何情况下都不会访问、上传或存储你的照片。",
+  "priv.pill1": "✓ 设备端渲染",
+  "priv.pill2": "✓ 隐私优先的设计",
+  "priv.pill3": "✓ 照片绝不上传或存储",
+  "priv.pill4": "✓ 完全离线可用",
+  "priv.vh": "100% 设备端",
+  "priv.vp": "所有处理都在你的设备本地完成。你的图片始终属于你。",
+  "cta.h": "今天就开始加水印",
+  "cta.p": "WatermarkIT 在 App Store 上完全免费，支持 iOS 18 及更高版本。无需账户，不用云端，没有套路。",
+  "cta.btn": "从 App Store 免费下载",
+  "foot.support": "支持",
+  "foot.privacy": "隐私政策",
+  "foot.copy": "WatermarkIT. 为 iOS 用 ❤️ 打造。保留所有权利。",
+  "f11.h": "说你的语言",
+  "f11.p": "不只是商店页面，而是整个 App 都提供阿拉伯语、英语、日语与繁体中文。阿拉伯语在所有界面均采用从右至左的排版，你还可以在设置中切换语言，无需更改设备语言。"
+ },
+ "zh-Hant": {
+  "lang.label": "語言",
+  "trans.note": "本譯文僅供參考，以英文版為準。",
+  "nav.features": "功能",
+  "nav.privacy": "隱私",
+  "nav.support": "支援",
+  "nav.cta": "免費取得",
+  "hero.badge": "1.1.2 版 — 現已支援阿拉伯文、日文與繁體中文",
+  "hero.h1a": "為你的照片加浮水印",
+  "hero.h1b": "既好看，又私密",
+  "hero.sub": "用文字、標誌、你親手寫的簽名，或一個可掃描的 QR 碼為照片加上標記，再並排重複鋪開，讓人找不到可以裁掉的乾淨角落。可以一張張處理，也可以整組批次處理。所有處理都在你的裝置上完成，絕不上傳雲端。",
+  "hero.download": "從 App Store 免費下載",
+  "hero.features": "查看功能 →",
+  "strip1": "裝置端處理",
+  "strip2": "重視隱私",
+  "strip3": "不上傳雲端",
+  "strip4": "完全離線可用",
+  "feat.label": "功能",
+  "feat.title": "保護照片所需的一切",
+  "feat.sub": "四種為照片加註的方式，外加一種誰也裁不掉的標記。該強大的地方強大，其餘一切從簡。",
+  "f1.h": "文字浮水印",
+  "f1.p": "22 種字型，涵蓋無襯線、襯線、等寬、手寫體與書法體，並可完全控制大小、顏色與不透明度。加上陰影或外框，即使照片背景繁雜也依然清晰易讀。",
+  "f2.h": "標誌浮水印",
+  "f2.p": "匯入你自己的標誌，放到任意位置。支援 360° 旋轉、水平或垂直翻轉，以及大幅度的縮放。同時支援 PNG 透明背景。",
+  "f3.h": "親手簽名",
+  "f3.p": "用任何墨水顏色直接在照片上書寫簽名，並支援還原與重做。最接近在照片上親筆簽名的體驗，全程不必離開手機。",
+  "f4.h": "QR 碼標記",
+  "f4.p": "把連結變成可掃描的標記，指向你的作品集、商店或授權條款。完全在裝置端產生，沒有任何伺服器會看到這個網址。",
+  "f5.h": "並排重複",
+  "f5.p": "以可調間距把標記重複鋪滿整張照片，不留任何可裁掉的乾淨角落。校樣業界的通行做法，已內建其中。",
+  "f6.h": "隱形署名",
+  "f6.p": "把你的姓名與版權寫入匯出檔案的 IPTC 與 TIFF 欄位。它會隨檔案一同傳遞，並能在裁切後保留，即使可見的浮水印被去掉，你依然握有對作品的主張。",
+  "f7.h": "八組內建預設集",
+  "f7.p": "以用途命名，而非以參數命名：客戶校樣、機密、草稿、照片署名、社群帳號、並排校樣、日期戳與小字聲明。點一下即可完成。",
+  "f8.h": "批次處理",
+  "f8.p": "選取多張照片，一次為它們套用相同的標記。非常適合商品拍攝、作品集與社群媒體圖組。",
+  "f9.h": "可重複使用的範本",
+  "f9.p": "把你自己的浮水印樣式儲存為具名範本，點一下即可重複使用。也可以從主畫面的「最近作品」重新開啟任何作品，再次匯出。",
+  "f10.h": "依用途匯出",
+  "f10.p": "支援 JPEG、PNG 或 HEIC。提供 1:1、4:5、9:16 與 16:9 的形狀，可選符合或填滿。原始、大型或網頁尺寸均附真實像素與預估檔案大小，檔名也可自行指定。",
+  "how.label": "使用方式",
+  "how.title": "三步驟搞定。",
+  "how.sub": "介面簡潔直覺。打開 App 就能開始。",
+  "st1.h": "選擇照片",
+  "st1.p": "可以從圖庫中選擇、用相機現拍，或從「檔案」匯入。主畫面上的「最近作品」還能找回你先前做過的任何一張。",
+  "st2.h": "加入浮水印",
+  "st2.p": "輸入文字、加入標誌、親手簽名，或產生 QR 碼。點一下預設集即可直達成品效果，若想全面覆蓋再並排重複即可。",
+  "st3.h": "匯出與分享",
+  "st3.p": "以 JPEG、PNG 或 HEIC 儲存到相機膠卷，需要時可依形狀裁切，也可以透過任何 iOS 分享工作表直接傳送。",
+  "crop.label": "裁不掉的署名",
+  "crop.h": "一個裁不掉的標記",
+  "crop.p1": "可見的浮水印可能被裁掉、被塗改、被模糊處理。因此 WatermarkIT 還會把你的姓名與版權寫入 <strong style=\"color:#fff;\">照片檔案本身之中</strong>，也就是影像編輯軟體、圖庫與素材管理系統早已在讀取的標準 IPTC 與 TIFF 欄位。",
+  "crop.p2": "把圖片裁掉一部分，署名依然還在。寫入的一律是你的名字，而非我們的，而且你可以在任何一次匯出時關閉它。",
+  "crop.pill1": "✓ 裁切後依然保留",
+  "crop.pill2": "✓ 標準 IPTC 與 TIFF 欄位",
+  "crop.pill3": "✓ 在你的裝置上寫入",
+  "crop.pill4": "✓ 點一下即可關閉",
+  "crop.vh": "隨行的署名",
+  "crop.vp": "你的署名與版權資訊，會隨檔案走到哪裡就跟到哪裡。",
+  "priv.label": "隱私優先",
+  "priv.h": "你的照片從不離開手機",
+  "priv.p": "WatermarkIT 完全在你的裝置上處理一切。我們鄭重承諾，在任何情況下都不會存取、上傳或儲存你的照片。",
+  "priv.pill1": "✓ 裝置端算繪",
+  "priv.pill2": "✓ 隱私優先的設計",
+  "priv.pill3": "✓ 照片絕不上傳或儲存",
+  "priv.pill4": "✓ 完全離線可用",
+  "priv.vh": "100% 裝置端",
+  "priv.vp": "所有處理都在你的裝置本機完成。你的影像始終屬於你。",
+  "cta.h": "今天就開始加浮水印",
+  "cta.p": "WatermarkIT 在 App Store 上完全免費，支援 iOS 18 以上版本。不需帳號，不用雲端，沒有附帶條件。",
+  "cta.btn": "從 App Store 免費下載",
+  "foot.support": "支援",
+  "foot.privacy": "隱私權政策",
+  "foot.copy": "WatermarkIT. 為 iOS 用 ❤️ 打造。保留一切權利。",
+  "f11.h": "說你的語言",
+  "f11.p": "不只是商店頁面，而是整個 App 都提供阿拉伯文、英文、日文與繁體中文。阿拉伯文在所有畫面均採用由右至左的排版，你還可以在設定中切換語言，不必更改裝置語言。"
+ }
+};
+
+  // The storefront whose listing is in that language. Empty means "no country
+  // segment", which resolves to the reader's own storefront. Kept in step with
+  // WatermarkItLinks in the app.
+  const STOREFRONT = { en: '', ar: '/sa', ja: '/jp', 'zh-Hans': '/cn', 'zh-Hant': '/tw' };
+  const APP_ID = '6797597563';
+
+  const SUPPORTED = Object.keys(I18N);
+  const RTL = new Set(['ar']);
+
+  // The English title and description are tuned for search, so they are kept
+  // verbatim rather than rebuilt from the hero copy — and restored when the
+  // reader switches back, which a one-way override would not do.
+  const EN_TITLE = document.title;
+  const EN_DESC = (document.querySelector('meta[name="description"]') || {}).content || '';
+
+  function resolveLang() {
+    const q = new URLSearchParams(location.search).get('lang');
+    let stored = null;
+    try { stored = localStorage.getItem('wmk-lang'); } catch (e) {}
+    for (const cand of [q, stored, ...(navigator.languages || [navigator.language || ''])]) {
+      if (!cand) continue;
+      if (I18N[cand]) return cand;
+      const low = cand.toLowerCase();
+      if (low.startsWith('zh')) {
+        return /hant|tw|hk|mo/.test(low) ? 'zh-Hant' : 'zh-Hans';
+      }
+      const base = low.split('-')[0];
+      const hit = SUPPORTED.find(l => l.toLowerCase().split('-')[0] === base);
+      if (hit) return hit;
+    }
+    return 'en';
+  }
+
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    const root = document.documentElement;
+    root.lang = lang;
+    root.dir = RTL.has(lang) ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const v = dict[el.dataset.i18n];
+      if (v !== undefined) el.innerHTML = v;   // authored strings, not user input
+    });
+
+    const desc = document.querySelector('meta[name="description"]');
+    if (lang === 'en') {
+      document.title = EN_TITLE;
+      if (desc) desc.setAttribute('content', EN_DESC);
+    } else {
+      document.title = 'WatermarkIT \u2014 ' + (dict['hero.h1a'] || '');
+      if (desc) desc.setAttribute('content', (dict['hero.sub'] || '').replace(/<[^>]*>/g, ''));
+    }
+
+    // Send the reader to the storefront that has the listing in their language.
+    const store = document.getElementById('app-store-link');
+    if (store) {
+      store.href = 'https://apps.apple.com' + (STOREFRONT[lang] || '') + '/app/id' + APP_ID;
+    }
+
+    const pick = document.getElementById('langpick');
+    if (pick) { pick.value = lang; pick.setAttribute('aria-label', dict['lang.label'] || 'Language'); }
+
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || !/^(index|support|privacy)\.html/.test(href)) return;
+      const u = new URL(href, location.href);
+      u.searchParams.set('lang', lang);
+      a.setAttribute('href', u.pathname.split('/').pop() + u.search);
+    });
+
+    try { localStorage.setItem('wmk-lang', lang); } catch (e) {}
+  }
+
+  applyLang(resolveLang());
+
+  document.getElementById('langpick').addEventListener('change', e => {
+    applyLang(e.target.value);
+    const u = new URL(location.href);
+    u.searchParams.set('lang', e.target.value);
+    history.replaceState(null, '', u);
+  });
+
   document.getElementById('yr-index').textContent = new Date().getFullYear();
 </script>
 </body>
